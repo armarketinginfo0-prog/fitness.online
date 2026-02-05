@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Indore Fitness</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+:root{
+  --red:#d6452f;
+  --black:#0f0f0f;
+  --gray:#6b6b6b;
+  --light:#f3efe8;
+  --lighter:#fbf8f2;
+  --card:#ffffff;
+  --border:#e8e2d9;
+}
+
+body{
+  background:var(--lighter);
+  color:var(--black);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--lighter);
+  border-bottom:1px solid var(--border);
+}
+
+nav h1{
+  font-size:26px;
+  font-weight:800;
+  color:var(--red);
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+nav a{
+  text-decoration:none;
+  color:#111;
+  font-weight:500;
+}
+
+/* HEADER */
+.header{
+  padding:160px 20px 60px;
+  text-align:center;
+}
+
+.header h2{
+  font-size:42px;
+  font-weight:800;
+}
+
+.header span{
+  color:var(--red);
+}
+
+/* LAYOUT */
+.contact-section{
+  padding:40px 80px 120px;
+}
+
+.contact-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  padding:50px;
+  border-radius:28px;
+  border:1px solid var(--border);
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+/* FORM */
+form input{
+  width:100%;
+  padding:16px;
+  margin-bottom:18px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  font-size:15px;
+}
+
+form input:focus{
+  outline:none;
+  border-color:var(--red);
+}
+
+.btn{
+  display:inline-block;
+  padding:16px 46px;
+  background:var(--red);
+  color:#fff;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+  border:none;
+  width:100%;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(214,69,47,.35);
+}
+
+/* SOCIAL */
+.social-box h3{
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+.social-links{
+  display:flex;
+  gap:18px;
+  margin-top:20px;
+}
+
+.social-links a{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--red);
+  transition:.3s;
+}
+
+.social-links a:hover{
+  transform:translateY(-6px) scale(1.08);
+}
+
+.social-links svg{
+  width:26px;
+  height:26px;
+  fill:#fff;
+}
+
+/* TEXT */
+.text{
+  color:var(--gray);
+  line-height:1.7;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:#ddd;
+  text-align:center;
+  padding:26px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .contact-section{
+    padding:40px 30px 100px;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>Indore Fitness</h1>
+
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- HEADER -->
+<section class="header">
+  <h2>Contact <span>Us</span></h2>
+</section>
+
+<section class="contact-section">
+
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="card">
+      <h3>Get a Call Back</h3>
+      <p class="text">Leave your details and we will contact you.</p>
+
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <button class="btn">Submit</button>
+      </form>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="card social-box">
+      <h3>Connect With Us</h3>
+      <p class="text">
+        Call directly or follow us on social media for updates,
+        transformations, and training tips.
+      </p>
+
+      <div class="social-links">
+
+        <!-- CALL -->
+        <a href="tel:+911234567890">
+          <svg viewBox="0 0 24 24">
+            <path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.25c1.1.3 2.3.45 3.6.45a1 1 0 011 1V21a1 1 0 01-1 1C11 22 2 13 2 2a1 1 0 011-1h3.6a1 1 0 011 1c0 1.3.15 2.5.45 3.6a1 1 0 01-.25 1z"/>
+          </svg>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="https://instagram.com/yourprofile" target="_blank">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.8a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/>
+          </svg>
+        </a>
+
+        <!-- FACEBOOK -->
+        <a href="https://facebook.com/yourpage" target="_blank">
+          <svg viewBox="0 0 24 24">
+            <path d="M13 22v-8h3l1-4h-4V7c0-1.1.3-2 2-2h2V1.5S15.5 1 14 1c-3 0-5 2-5 5v3H6v4h3v8z"/>
+          </svg>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Indore Fitness • Women Only Online Fitness Studio
+</footer>
+
+</body>
+</html>
