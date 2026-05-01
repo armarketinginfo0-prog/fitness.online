@@ -668,10 +668,8 @@ body::after{
 
 <section id="results-services">
   <div class="results-grid">
-    <div class="ba-stack reveal-left">
-      <div class="ba-item tilt"><img src="before.jpg" alt="Before"><div class="ba-label">Before</div></div>
-      <div class="ba-item tilt"><img src="after.jpg" alt="After"><div class="ba-label">After</div></div>
-    </div>
+    <div class="ba-stack reveal-left" id="serviceBaStack">
+  </div>
     <div class="services-wrapper reveal-right">
       <span class="section-label">What We Offer</span>
       <h2 class="section-heading">Our Services</h2>
@@ -1022,6 +1020,46 @@ function rotateResults() {
   });
 }
 setInterval(rotateResults, 3000);
+
+/* ══════════════════════════════════════════════
+   SERVICES SECTION: Random Image Shuffler
+══════════════════════════════════════════════ */
+function updateServiceImages() {
+  const stack = document.getElementById('serviceBaStack');
+  if (!stack) return;
+
+  // Pick two unique random numbers between 1 and 17
+  let first = Math.floor(Math.random() * 17) + 1;
+  let second = Math.floor(Math.random() * 17) + 1;
+  while (second === first) {
+    second = Math.floor(Math.random() * 17) + 1;
+  }
+
+  // Inject the HTML with the new random images
+  stack.innerHTML = `
+    <div class="ba-item tilt"><img src="ba${first}.jpg" alt="Result"><div class="ba-label">Transformation</div></div>
+    <div class="ba-item tilt"><img src="ba${second}.jpg" alt="Result"><div class="ba-label">Transformation</div></div>
+  `;
+  
+  // Re-apply the tilt effect to the new elements
+  applyTiltToNewElements();
+}
+
+function applyTiltToNewElements() {
+  document.querySelectorAll('.ba-item.tilt').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `perspective(600px) rotateY(${x * 12}deg) rotateX(${-y * 8}deg) scale(1.02)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+}
+
+// Initialize on load and rotate every 4 seconds
+updateServiceImages();
+setInterval(updateServiceImages, 4000);
 
 /* ABOUT BG VIDEO */
 const abv = document.getElementById('aboutBgVid');
