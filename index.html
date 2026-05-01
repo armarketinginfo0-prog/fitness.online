@@ -608,43 +608,74 @@ body::after{
   }
   .rp-box::after{ font-size:14px; }
 
-  /* TESTIMONIALS MOBILE */
+/* TESTIMONIALS MOBILE - Increased size and halved speed */
   .testimonials-header{ padding:0 20px; }
   .testimonial-wall{
     gap:12px;
     mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent);
     -webkit-mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent);
   }
-  .t-row-1 .t-card img{ max-height:200px; max-width:280px; }
-  .t-row-2 .t-card img{ max-height:150px; max-width:240px; }
 
-  /* ABOUT MOBILE */
-  #about-preview{ min-height:auto; }
-  .about-video-bg::after{
-    background:linear-gradient(to bottom,
-      rgba(10,9,8,.20) 0%,
-      rgba(250,246,240,.93) 65%,
+  /* Speed halved by doubling the animation duration */
+  .t-row-1 { animation-duration: 60s !important; } 
+  .t-row-2 { animation-duration: 76s !important; }
+
+  /* Images enlarged for better mobile visibility */
+  .t-row-1 .t-card img{ max-height:300px; max-width:350px; }
+  .t-row-2 .t-card img{ max-height:220px; max-width:300px; }
+
+/* ABOUT MOBILE - Image starts halfway on the video */
+  #about-preview { min-height: auto; display: block; background: var(--cream); }
+
+  /* Video container takes top half of viewport height */
+  .about-video-bg { 
+    position: relative; 
+    height: 50vh; 
+    width: 100%; 
+    z-index: 0; 
+  }
+
+  .about-video-bg::after {
+    background: linear-gradient(to bottom,
+      rgba(10,9,8,.10) 0%,
+      rgba(250,246,240,.4) 50%,
       rgba(250,246,240,1.00) 100%
     );
   }
-  .about-grid{ grid-template-columns:1fr; gap:32px; padding:72px 20px; }
-  .about-img-frame{ transform:none !important; width:60%; }
-  .about-img-frame img{ height:220px; }
-  .about-deco{ display:none; }
-  .about-badge{ position:static; margin-top:16px; display:inline-block; }
 
-  /* FLOAT BAR */
-  .float-bar{ right:12px; }
-  .float-btn{ width:44px; height:44px; }
-  .float-btn::before{ display:none; }
-  .float-btn svg{ width:18px; height:18px; }
+  /* Pulling the content grid up to overlap the video */
+  .about-grid { 
+    grid-template-columns: 1fr; 
+    gap: 0; 
+    padding: 0 20px 72px; 
+    margin-top: -25vh; /* Pulls image up to the halfway mark of the video */
+    position: relative;
+    z-index: 1;
+  }
 
-  /* CTA */
-  .cta-buttons{ flex-direction:column; align-items:center; }
-  .cta-buttons .btn{ width:100%; max-width:360px; justify-content:center; }
+  .about-visual { 
+    align-items: center; 
+    margin-bottom: 30px; 
+  }
 
-  footer{ padding:20px; font-size:12px; }
-}
+  .about-img-frame { 
+    transform: none !important; 
+    width: 80%; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .about-img-frame img { height: 320px; }
+
+  .about-badge { 
+    position: absolute; 
+    bottom: -15px; 
+    right: 15%; 
+    margin-top: 0; 
+  }
+
+  .about-text { text-align: center; }
+  .about-text .section-label { justify-content: center; }
+  .about-list li { justify-content: center; }
 </style>
 </head>
 <body>
@@ -1107,4 +1138,5 @@ document.querySelectorAll('.t-row').forEach(row => {
 });
 </script>
 </body>
+
 </html>
