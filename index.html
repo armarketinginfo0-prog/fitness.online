@@ -134,28 +134,33 @@ section{ padding:120px 80px; }
   border:1px solid rgba(0,0,0,0.07);
   transition:all .4s cubic-bezier(.2,.8,.2,1); position:relative; overflow:hidden;
 }
-.card::before{
-  content:""; position:absolute; bottom:0; left:0; width:100%; height:3px;
-  background:linear-gradient(90deg,var(--red),var(--gold));
-  transform:scaleX(0); transform-origin:left; transition:.4s ease;
+
+/* Update this block for R, S, C, and Star visibility */
+.card .card-num { 
+  font-family: var(--fd); 
+  font-size: 72px; 
+  font-weight: 800; 
+  color: rgba(224, 61, 34, 0.25); /* Increased opacity for high contrast */
+  line-height: 1; 
+  margin-bottom: 20px; 
 }
-.card:hover{ transform:translateY(-10px); box-shadow:0 30px 60px rgba(0,0,0,.1); border-color:transparent; }
-.card:hover::before{ transform:scaleX(1); }
-.card-num{ font-family:var(--fd); font-size:72px; font-weight:800; color:rgba(224,61,34,.08); line-height:1; margin-bottom:20px; }
+
 .dark-card{
   background:var(--glass); border:1px solid var(--glass-b);
   backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
   padding:40px 32px; border-radius:2px;
   transition:all .4s cubic-bezier(.2,.8,.2,1); position:relative; overflow:hidden;
 }
-.dark-card::after{
-  content:""; position:absolute; top:0; left:0; width:3px; height:0;
-  background:linear-gradient(180deg,var(--red),var(--gold)); transition:.4s ease;
+
+/* Update this block for 01, 02, 03 visibility in the dark section */
+.dark-card .card-num { 
+  font-family: var(--fd); 
+  font-size: 72px; 
+  font-weight: 800; 
+  color: rgba(255, 255, 255, 0.2); /* Changed to white-transparent for contrast */
+  line-height: 1; 
+  margin-bottom: 20px; 
 }
-.dark-card:hover{ background:rgba(255,255,255,.08); transform:translateY(-8px); border-color:rgba(224,61,34,.3); }
-.dark-card:hover::after{ height:100%; }
-.dark-card .subheading{ color:#fff; }
-.dark-card .body-text{ color:rgba(255,255,255,.55); }
 
 /* ══════════════════ GRID HELPERS ══════════════════ */
 .three-col{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1100px; margin:0 auto; }
@@ -191,7 +196,6 @@ section{ padding:120px 80px; }
 .hero-heading{
   font-family:var(--fd); font-size:68px; font-weight:800;
   line-height:.98; letter-spacing:-2px; color:var(--black); margin-bottom:28px;
-  /* LEFT ALIGNED */
   text-align:left;
 }
 .hero-heading em{
@@ -201,7 +205,6 @@ section{ padding:120px 80px; }
   content:""; position:absolute; bottom:-4px; left:0; right:0;
   height:3px; background:linear-gradient(90deg,var(--red),var(--gold)); border-radius:2px;
 }
-/* LEFT ALIGNED hero text block */
 .hero-desc{
   font-size:16px; color:var(--gray); line-height:1.7; max-width:420px; margin-bottom:40px;
   text-align:left;
@@ -287,15 +290,13 @@ section{ padding:120px 80px; }
 }
 .svc-check svg{ width:14px; height:14px; stroke:var(--red); stroke-width:2.5; fill:none; }
 
-/* ══════════════════════════════════════════════════════
-   RESULTS PREVIEW — 2 COLUMNS × 3 ROWS
-══════════════════════════════════════════════════════ */
+/* ══════════════════ RESULTS PREVIEW ══════════════════ */
 #results-preview{ background:var(--cream); padding:120px 80px; }
 
 .results-preview-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);   /* ← 2 columns */
-  grid-template-rows:repeat(3,320px);    /* ← 3 rows */
+  grid-template-columns:repeat(2,1fr);
+  grid-template-rows:repeat(3,320px);
   gap:16px;
   max-width:900px;
   margin:0 auto 50px;
@@ -323,10 +324,7 @@ section{ padding:120px 80px; }
 .rp-box img.fading{ opacity:0; }
 .rp-box img.visible{ opacity:1; }
 
-/* ══════════════════════════════════════════════════════
-   TESTIMONIALS — MASONRY / VARIABLE SIZE LAYOUT
-   Images shown at natural aspect ratio, variable heights
-══════════════════════════════════════════════════════ */
+/* ══════════════════ TESTIMONIALS ══════════════════ */
 #testimonials{ background:var(--dark); padding:120px 0; overflow:hidden; position:relative; }
 #testimonials::before{
   content:""; position:absolute; inset:0;
@@ -350,21 +348,18 @@ section{ padding:120px 80px; }
 @keyframes marqueeR{ 0%{ transform:translateX(-50%); } 100%{ transform:translateX(0); } }
 .testimonial-wall:hover .t-row{ animation-play-state:paused; }
 
-/* Variable size cards — no cropping, no forced dimensions */
 .t-card{
   background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
   border-radius:4px; overflow:hidden; flex-shrink:0;
-  /* NO fixed height — card grows to fit image naturally */
   transition:all .3s ease;
 }
 .t-card:hover{ border-color:rgba(224,61,34,.4); transform:scale(1.04); box-shadow:0 20px 50px rgba(0,0,0,.4); }
 
-/* Images: full natural size, just capped at a max-height for row 1 and row 2 */
 .t-row-1 .t-card img{
   display:block;
   width:auto;
   height:auto;
-  max-height:320px;   /* row 1 — taller cards */
+  max-height:320px;
   max-width:420px;
   object-fit:contain;
 }
@@ -372,21 +367,18 @@ section{ padding:120px 80px; }
   display:block;
   width:auto;
   height:auto;
-  max-height:220px;   /* row 2 — shorter cards for visual rhythm */
+  max-height:220px;
   max-width:350px;
   object-fit:contain;
 }
 
-/* ══════════════════════════════════════════════════════
-   ABOUT — SMALLER IMAGE LEFT-ALIGNED + ABOUTVID BACKGROUND
-══════════════════════════════════════════════════════ */
+/* ══════════════════ ABOUT ══════════════════ */
 #about-preview{ padding:0; position:relative; overflow:hidden; min-height:620px; background:var(--cream); }
 
 .about-video-bg{
   position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden;
 }
 .about-video-bg video{ width:100%; height:100%; object-fit:cover; display:block; opacity:0.72; }
-/* Gradient: left stays visible (video shows through), right fades to cream */
 .about-video-bg::after{
   content:""; position:absolute; inset:0;
   background:linear-gradient(to right,
@@ -404,19 +396,18 @@ section{ padding:120px 80px; }
   position:relative;
   display:flex;
   flex-direction:column;
-  align-items:flex-start;   /* LEFT-ALIGNED */
+  align-items:flex-start;
 }
 .about-img-frame{
   border-radius:4px; overflow:hidden;
   box-shadow:0 20px 60px rgba(0,0,0,.22);
   transform:perspective(800px) rotateY(4deg); transition:.6s cubic-bezier(.2,.8,.2,1);
-  /* SMALLER: was 100% width filling the column */
   width:72%;
 }
 .about-img-frame:hover{ transform:perspective(800px) rotateY(0); }
 .about-img-frame img{
   width:100%;
-  height:320px;   /* reduced from 440px */
+  height:320px;
   object-fit:cover; display:block;
 }
 .about-deco{
@@ -429,18 +420,15 @@ section{ padding:120px 80px; }
   right: 28%;
   background: var(--red); 
   color: #fff;
-  /* REDUCED PADDING: from 12px 16px to 6px 10px */
   padding: 6px 10px; 
   border-radius: 2px; 
   font-family: var(--fd); 
   text-align: center;
   box-shadow: 0 10px 30px rgba(224,61,34,0.35);
-  /* Added max-width to keep it compact */
   max-width: fit-content; 
 }
 
 .about-badge strong { 
-  /* REDUCED SIZE: from 24px to 18px */
   font-size: 18px; 
   font-weight: 800; 
   display: block; 
@@ -448,11 +436,19 @@ section{ padding:120px 80px; }
 }
 
 .about-badge span { 
-  /* REDUCED SIZE: from 11px to 9px */
   font-size: 9px; 
   letter-spacing: 1px; 
   text-transform: uppercase; 
 }
+.about-list{ list-style:none; margin:28px 0; display:flex; flex-direction:column; gap:12px; }
+.about-list li{ display:flex; align-items:center; gap:14px; font-size:15px; font-weight:500; transition:.3s ease; }
+.about-list li:hover{ color:var(--red); transform:translateX(6px); }
+.about-list-check{
+  width:22px; height:22px; border-radius:50%; background:rgba(224,61,34,0.1);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.about-list-check svg{ width:12px; height:12px; stroke:var(--red); stroke-width:2.5; fill:none; }
+
 /* ══════════════════ PROBLEM ══════════════════ */
 #problem{ background:var(--dark); padding:120px 80px; position:relative; overflow:hidden; }
 #problem::before{
@@ -521,27 +517,17 @@ body::after{
   pointer-events:none; z-index:9998; opacity:.4;
 }
 
-/* ══════════════════════════════════════════════════════
-   MOBILE  ≤ 900px
-══════════════════════════════════════════════════════ */
+/* ══════════════════ MOBILE ══════════════════ */
 @media(max-width:900px){
   html, body{ overflow-x:hidden; }
-
-  /* NAV */
-  nav{
-    padding:12px 16px; flex-direction:column; align-items:center; gap:10px;
-  }
+  nav{ padding:12px 16px; flex-direction:column; align-items:center; gap:10px; }
   nav::before{ background:rgba(250,246,240,.95) !important; backdrop-filter:blur(16px) !important; border-bottom:1px solid var(--border) !important; }
   nav ul{ gap:0; width:100%; justify-content:space-around; border-top:1px solid var(--border); padding-top:10px; }
   nav ul li{ flex:1; text-align:center; }
   nav ul li a{ font-size:12px; }
 
   section{ padding:72px 16px; }
-  #hero{
-    padding:140px 16px 60px;
-    min-height:auto; align-items:flex-start;
-    width:100%; max-width:100vw; overflow:hidden;
-  }
+  #hero{ padding:140px 16px 60px; min-height:auto; align-items:flex-start; width:100%; max-width:100vw; overflow:hidden; }
   #hero::before{ display:none; }
   #results-services{ clip-path:none; padding:72px 16px; }
   #problem{ padding:72px 16px; }
@@ -553,36 +539,15 @@ body::after{
   .section-heading{ font-size:32px; letter-spacing:-.8px; margin-bottom:18px; }
   .btn{ padding:14px 20px; font-size:13px; }
 
-  /* HERO — single column, fully contained */
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:28px;
-    width:100%;
-    max-width:100%;
-  }
-  .hero-text{
-    text-align:left; padding-right:0;
-    width:100%; max-width:100%;
-  }
+  .hero-grid{ grid-template-columns:1fr; gap:28px; width:100%; max-width:100%; }
+  .hero-text{ text-align:left; padding-right:0; width:100%; max-width:100%; }
   .hero-heading{ font-size:38px; letter-spacing:-1.2px; text-align:left; }
   .hero-desc{ margin:0 0 24px; text-align:left; max-width:100%; }
   .hero-eyebrow{ font-size:10px; letter-spacing:2px; }
 
-  /* Video wrap — constrained to viewport */
-  .hero-video-wrap{
-    width:100%; max-width:100%;
-    position:relative; overflow:visible;
-  }
-  .hero-video-frame{
-    transform:none !important;
-    width:100%; max-width:100%;
-    border-radius:4px; overflow:hidden;
-  }
-  .hero-video-frame video{
-    width:100%; height:auto;
-    max-height:320px;
-    display:block;
-  }
+  .hero-video-wrap{ width:100%; max-width:100%; position:relative; overflow:visible; }
+  .hero-video-frame{ transform:none !important; width:100%; max-width:100%; border-radius:4px; overflow:hidden; }
+  .hero-video-frame video{ width:100%; height:auto; max-height:320px; display:block; }
   .hero-video-badge{ width:56px; height:56px; top:-10px; right:4px; }
   .hero-video-badge span{ font-size:13px; }
   .hero-video-badge small{ font-size:7px; }
@@ -590,110 +555,50 @@ body::after{
   .hero-stat-num{ font-size:28px; }
   .hero-deco-line{ display:none; }
   .hero-desktop-btn{ display:none; }
-  .hero-mobile-btn{
-    display:inline-flex; width:100%;
-    justify-content:center; margin-top:12px;
-  }
+  .hero-mobile-btn{ display:inline-flex; width:100%; justify-content:center; margin-top:12px; }
 
-  /* CARDS */
   .three-col{ grid-template-columns:1fr; gap:16px; }
   .value-grid{ grid-template-columns:1fr; gap:16px; }
   .card{ padding:28px 22px; }
   .dark-card{ padding:26px 20px; }
 
-  /* SERVICES */
   .results-grid{ grid-template-columns:1fr; gap:32px; }
   .ba-stack{ display:none; }
   .services-wrapper{ border-left:none; border-top:2px solid var(--red); padding-left:0; padding-top:28px; }
   .services-list{ gap:6px; }
   .services-list li{ font-size:14px; padding:12px 14px; border-radius:4px; }
 
-  /* RESULTS 2×3 ON MOBILE */
   #results-preview{ padding:72px 10px; }
-  .results-preview-grid{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:repeat(3,42vw);
-    gap:6px;
-    max-width:100%;
-    margin-bottom:24px;
-  }
+  .results-preview-grid{ grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,42vw); gap:6px; max-width:100%; margin-bottom:24px; }
   .rp-box::after{ font-size:14px; }
 
-/* TESTIMONIALS MOBILE - Increased size and halved speed */
   .testimonials-header{ padding:0 20px; }
-  .testimonial-wall{
-    gap:12px;
-    mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent);
-    -webkit-mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent);
-  }
-
-  /* Speed halved by doubling the animation duration */
+  .testimonial-wall{ gap:12px; mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent); -webkit-mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent); }
   .t-row-1 { animation-duration: 60s !important; } 
   .t-row-2 { animation-duration: 76s !important; }
-
-  /* Images enlarged for better mobile visibility */
   .t-row-1 .t-card img{ max-height:300px; max-width:350px; }
   .t-row-2 .t-card img{ max-height:220px; max-width:300px; }
 
-/* ABOUT MOBILE - Image moved to 75% lower on the video */
-  #about-preview { 
-    min-height: auto; 
-    display: block; 
-    background: var(--cream); 
-  }
-
-  /* Video container height remains at 50% of the screen */
-  .about-video-bg { 
-    position: relative; 
-    height: 50vh; 
-    width: 100%; 
-    z-index: 0; 
-  }
-
-  .about-video-bg::after {
-    background: linear-gradient(to bottom,
-      rgba(10,9,8,.05) 0%,
-      rgba(250,246,240,.2) 70%, /* Pushed the fade further down */
-      rgba(250,246,240,1.00) 100%
-    );
-  }
-
-  /* 75% ADJUSTMENT: 
-     Reducing the negative margin-top moves the grid lower. 
-     -12vh ensures only the top ~25% of the image overlaps the video. */
-  .about-grid { 
-    grid-template-columns: 1fr; 
-    gap: 0; 
-    padding: 0 20px 72px; 
-    margin-top: -12vh; 
-    position: relative;
-    z-index: 1;
-  }
-
-  .about-visual { 
-    align-items: center; 
-    margin-bottom: 25px; 
-  }
-
-  .about-img-frame { 
-    transform: none !important; 
-    width: 80%; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-  }
-
-  /* Keep the image height consistent */
+  #about-preview { min-height: auto; display: block; background: var(--cream); }
+  .about-video-bg { position: relative; height: 50vh; width: 100%; z-index: 0; }
+  .about-video-bg::after { background: linear-gradient(to bottom, rgba(10,9,8,.05) 0%, rgba(250,246,240,.2) 70%, rgba(250,246,240,1.00) 100% ); }
+  .about-grid { grid-template-columns: 1fr; gap: 0; padding: 0 20px 72px; margin-top: -12vh; position: relative; z-index: 1; }
+  .about-visual { align-items: center; margin-bottom: 25px; }
+  .about-img-frame { transform: none !important; width: 80%; box-shadow: 0 25px 50px rgba(0,0,0,0.35); }
   .about-img-frame img { height: 320px; }
-
-  /* Compact badge positioning */
-  .about-badge { 
-    position: absolute; 
-    bottom: -10px; 
-    right: 15%; 
-    margin-top: 0; 
-  }
-
+  .about-badge { position: absolute; bottom: -10px; right: 15%; margin-top: 0; }
   .about-text { text-align: center; }
   .about-text .section-label { justify-content: center; }
+
+  .float-bar{ right:12px; }
+  .float-btn{ width:44px; height:44px; }
+  .float-btn::before{ display:none; }
+  .float-btn svg{ width:18px; height:18px; }
+
+  .cta-buttons{ flex-direction:column; align-items:center; }
+  .cta-buttons .btn{ width:100%; max-width:360px; justify-content:center; }
+  footer{ padding:20px; font-size:12px; }
+}
 </style>
 </head>
 <body>
@@ -716,12 +621,10 @@ body::after{
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-grid">
     <div class="hero-text reveal-left">
       <div class="hero-eyebrow">Women Only Online Fitness</div>
-      <!-- LEFT ALIGNED heading and desc -->
       <h1 class="hero-heading">Transform<br>your body<br>in just <em>30 days.</em></h1>
       <p class="hero-desc">Personal training, group classes, fat loss programs and diet planning — all from the comfort of home.</p>
       <a href="#final" class="btn hero-desktop-btn">
@@ -750,7 +653,6 @@ body::after{
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">Personal Training</span><span class="ticker-item">Women Fat Loss</span>
@@ -764,7 +666,6 @@ body::after{
   </div>
 </div>
 
-<!-- RESULTS + SERVICES -->
 <section id="results-services">
   <div class="results-grid">
     <div class="ba-stack reveal-left">
@@ -791,7 +692,6 @@ body::after{
   </div>
 </section>
 
-<!-- RESULTS PREVIEW: 2 cols × 3 rows -->
 <section id="results-preview">
   <span class="section-label center reveal" style="display:block;">Transformations</span>
   <h2 class="section-heading center reveal">Results</h2>
@@ -811,76 +711,69 @@ body::after{
   </div>
 </section>
 
-<!-- TESTIMONIALS: two horizontal scrolling rows, variable size images -->
 <section id="testimonials">
   <div class="testimonials-header reveal">
     <span class="section-label">Client Love</span>
     <h2 class="section-heading">What Our Clients Say</h2>
   </div>
   <div class="testimonial-wall">
-    <!-- Row 1 scrolls left -->
     <div class="t-row t-row-1">
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
+      <div class="t-card"><img src="rev1.jpeg" alt="Review 1"></div>
+      <div class="t-card"><img src="rev2.jpeg" alt="Review 2"></div>
+      <div class="t-card"><img src="rev3.jpeg" alt="Review 3"></div>
+      <div class="t-card"><img src="rev4.jpeg" alt="Review 4"></div>
+      <div class="t-card"><img src="rev5.jpeg" alt="Review 5"></div>
+      <div class="t-card"><img src="rev6.jpeg" alt="Review 6"></div>
+      <div class="t-card"><img src="rev7.jpeg" alt="Review 7"></div>
+      <div class="t-card"><img src="rev8.jpeg" alt="Review 8"></div>
+      <div class="t-card"><img src="rev9.jpeg" alt="Review 9"></div>
       <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
       <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
       <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
-      <!-- Duplicate for seamless loop -->
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
+      <div class="t-card"><img src="rev1.jpeg" alt="Review 1"></div>
+      <div class="t-card"><img src="rev2.jpeg" alt="Review 2"></div>
+      <div class="t-card"><img src="rev3.jpeg" alt="Review 3"></div>
+      <div class="t-card"><img src="rev4.jpeg" alt="Review 4"></div>
+      <div class="t-card"><img src="rev5.jpeg" alt="Review 5"></div>
+      <div class="t-card"><img src="rev6.jpeg" alt="Review 6"></div>
+      <div class="t-card"><img src="rev7.jpeg" alt="Review 7"></div>
+      <div class="t-card"><img src="rev8.jpeg" alt="Review 8"></div>
+      <div class="t-card"><img src="rev9.jpeg" alt="Review 9"></div>
       <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
       <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
       <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
     </div>
-    <!-- Row 2 scrolls right — reversed order -->
     <div class="t-row t-row-2">
       <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
       <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
       <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-      <!-- Duplicate for seamless loop -->
+      <div class="t-card"><img src="rev9.jpeg" alt="Review 9"></div>
+      <div class="t-card"><img src="rev8.jpeg" alt="Review 8"></div>
+      <div class="t-card"><img src="rev7.jpeg" alt="Review 7"></div>
+      <div class="t-card"><img src="rev6.jpeg" alt="Review 6"></div>
+      <div class="t-card"><img src="rev5.jpeg" alt="Review 5"></div>
+      <div class="t-card"><img src="rev4.jpeg" alt="Review 4"></div>
+      <div class="t-card"><img src="rev3.jpeg" alt="Review 3"></div>
+      <div class="t-card"><img src="rev2.jpeg" alt="Review 2"></div>
+      <div class="t-card"><img src="rev1.jpeg" alt="Review 1"></div>
       <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
       <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
       <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
+      <div class="t-card"><img src="rev9.jpeg" alt="Review 9"></div>
+      <div class="t-card"><img src="rev8.jpeg" alt="Review 8"></div>
+      <div class="t-card"><img src="rev7.jpeg" alt="Review 7"></div>
+      <div class="t-card"><img src="rev6.jpeg" alt="Review 6"></div>
+      <div class="t-card"><img src="rev5.jpeg" alt="Review 5"></div>
+      <div class="t-card"><img src="rev4.jpeg" alt="Review 4"></div>
+      <div class="t-card"><img src="rev3.jpeg" alt="Review 3"></div>
+      <div class="t-card"><img src="rev2.jpeg" alt="Review 2"></div>
+      <div class="t-card"><img src="rev1.jpeg" alt="Review 1"></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT: aboutvid as full background, smaller image left-aligned, text on right -->
 <section id="about-preview">
   <div class="about-video-bg">
-    <!-- Named "aboutvid" as requested -->
     <video id="aboutBgVid" autoplay muted loop playsinline preload="auto">
       <source src="aboutvid.mp4" type="video/mp4">
     </video>
@@ -899,7 +792,7 @@ body::after{
       <p class="body-text">I help women get fit in a simple, realistic and sustainable way. No extreme methods. No crash programs. Just smart training and consistency.</p>
       <p class="body-text" style="margin-top:12px;">My coaching focuses on real-life routines that busy women can follow without stress, confusion, or gym intimidation.</p>
       <ul class="about-list">
-        <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Certified Fitness Trainer &amp; Diet Coach</li>
+        <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Certified Fitness Trainer & Diet Coach</li>
         <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Specialized in Women Fat Loss</li>
         <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Designed for Busy Schedules</li>
         <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Suitable for All Age Groups</li>
@@ -912,7 +805,6 @@ body::after{
   </div>
 </section>
 
-<!-- PROBLEM -->
 <section id="problem">
   <span class="section-label center reveal" style="color:var(--gold);display:block;">The Problem</span>
   <h2 class="section-heading center reveal" style="color:#fff;">Why most fitness plans fail</h2>
@@ -938,7 +830,6 @@ body::after{
   </div>
 </section>
 
-<!-- DIFFERENT -->
 <section id="different">
   <span class="section-label center reveal" style="display:block;">The Solution</span>
   <h2 class="section-heading center reveal">What makes this different</h2>
@@ -964,7 +855,6 @@ body::after{
   </div>
 </section>
 
-<!-- VALUE -->
 <section id="value">
   <span class="section-label center reveal" style="display:block;">Your Investment</span>
   <h2 class="section-heading center reveal">What you actually get</h2>
@@ -994,7 +884,6 @@ body::after{
   </div>
 </section>
 
-<!-- FINAL CTA -->
 <section id="final">
   <span class="section-label reveal" style="color:var(--gold);">Get Started</span>
   <h2 class="section-heading reveal">Start your fitness<br>journey today</h2>
@@ -1097,11 +986,9 @@ function shuffle(arr) {
 let usedInPrevSet = new Set();
 
 function pickNextSet() {
-  // Available = all images NOT in the previous set
   const available = Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1)
                         .filter(n => !usedInPrevSet.has(n));
 
-  // If fewer than 6 available (shouldn't happen with 17 images), top up from full pool
   let pool = shuffle(available);
   if (pool.length < 6) {
     const extras = shuffle(Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1)
@@ -1116,7 +1003,6 @@ function pickNextSet() {
 
 let currentSet = pickNextSet();
 
-// Set initial src immediately
 document.querySelectorAll('#resultsGrid .rp-box img').forEach((img, i) => {
   img.src = `ba${currentSet[i]}.jpg`;
 });
@@ -1152,7 +1038,6 @@ document.querySelectorAll('.t-row').forEach(row => {
   }, { passive: true });
 
   row.addEventListener('touchend', () => {
-    // Increased timeout to 2000ms (2 seconds)
     setTimeout(() => { 
       row.style.animationPlayState = 'running'; 
     }, 2000); 
@@ -1160,5 +1045,4 @@ document.querySelectorAll('.t-row').forEach(row => {
 });
 </script>
 </body>
-
 </html>
