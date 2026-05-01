@@ -6,7 +6,7 @@
 <title>About Kavitha | Indoor Fitness</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════ ROOT & RESET (Synced with Home) ══════════════════ */
+/* ══════════════════ RESET & ROOT (Synced with Home) ══════════════════ */
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; overflow-x:hidden; }
 body{ background:#faf6f0; color:#0a0908; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
@@ -18,18 +18,28 @@ body{ background:#faf6f0; color:#0a0908; font-family:'DM Sans',sans-serif; overf
   --fd:'Syne',sans-serif;
 }
 
-/* ══════════════════ SHARED ELEMENTS ══════════════════ */
+/* ══════════════════ NAV ══════════════════ */
 nav{
   position:fixed; top:0; width:100%; padding:20px 72px;
   display:flex; justify-content:space-between; align-items:center;
-  z-index:1000; background:rgba(250,246,240,0.92); backdrop-filter:blur(20px);
+  z-index:1000; transition:all .4s ease;
+  background:rgba(250,246,240,0.92); backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
 .nav-logo{ font-family:var(--fd); font-size:22px; font-weight:800; color:var(--red); text-decoration:none; }
 nav ul{ list-style:none; display:flex; gap:36px; }
-nav ul li a{ text-decoration:none; color:var(--black); font-weight:500; font-size:14px; transition: .3s; }
+nav ul li a{
+  text-decoration:none; color:var(--black); font-weight:500; font-size:14px;
+  position:relative; padding-bottom:3px; transition: .3s;
+}
+nav ul li a::after{
+  content:""; position:absolute; bottom:0; left:0;
+  width:0; height:1.5px; background:var(--red); transition:width .3s ease;
+}
 nav ul li a:hover{ color:var(--red); }
+nav ul li a:hover::after{ width:100%; }
 
+/* ══════════════════ BUTTONS ══════════════════ */
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   padding:15px 40px; background:var(--red); color:#fff;
@@ -38,12 +48,18 @@ nav ul li a:hover{ color:var(--red); }
   transition:all .35s cubic-bezier(.2,.8,.2,1);
   position:relative; overflow:hidden; border:1px solid var(--red);
 }
-.btn:hover{ background: var(--white); color: var(--red); }
+.btn::before{
+  content:""; position:absolute; inset:0; background:var(--white);
+  transform:translateX(-101%); transition:transform .4s cubic-bezier(.77,0,.18,1);
+}
+.btn:hover{ color:var(--red); }
+.btn:hover::before{ transform:translateX(0); }
+.btn span, .btn > svg{ position:relative; z-index:1; }
 
 /* ══════════════════ MAIN LAYOUT (Mockup Inspired) ══════════════════ */
 .about-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Image 2: Video on Left, Content on Right */
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
   padding-top: 80px;
 }
@@ -60,7 +76,6 @@ nav ul li a:hover{ color:var(--red); }
   object-fit: cover;
 }
 
-/* Red Overlay from Mockup */
 .video-side::after {
   content: "";
   position: absolute;
@@ -78,14 +93,13 @@ nav ul li a:hover{ color:var(--red); }
   position: relative;
 }
 
-/* About Image (The Black Box in Mockup) */
 .coach-profile-img {
   width: 280px;
   height: 280px;
-  background: var(--black); /* Fallback */
+  background: var(--black);
   border-radius: 4px;
   overflow: hidden;
-  margin-bottom: -40px; /* Overlaps the blue card slightly */
+  margin-bottom: -40px;
   z-index: 2;
   box-shadow: 0 30px 60px rgba(0,0,0,0.2);
   transform: perspective(1000px) rotateY(-10deg);
@@ -102,9 +116,8 @@ nav ul li a:hover{ color:var(--red); }
   object-fit: cover;
 }
 
-/* The Info Card (The Blue Box in Mockup) */
 .info-card {
-  background: #5d34f5; /* Using the purple-blue from your mockup */
+  background: #5d34f5; 
   padding: 80px 40px 40px;
   border-radius: 12px;
   width: 100%;
@@ -126,31 +139,37 @@ nav ul li a:hover{ color:var(--red); }
 }
 .feature-list span { color: var(--gold); font-weight: bold; }
 
-/* ══════════════════ CTA SECTION (Direct from Home) ══════════════════ */
+/* ══════════════════ CTA SECTION ══════════════════ */
 #final{ background:var(--dark); padding:140px 80px; text-align:center; position:relative; overflow:hidden; }
 #final .section-heading{ font-family: var(--fd); font-size: 52px; color:#fff; margin-bottom: 20px; }
 #final .body-text{ color:rgba(255,255,255,.5); max-width:480px; margin:0 auto 48px; line-height: 1.6; }
 .cta-buttons{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
 
-/* ══════════════════ GRAIN & DECO ══════════════════ */
+/* ══════════════════ GRAIN ══════════════════ */
 body::after{
   content:""; position:fixed; inset:0;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events:none; z-index:9998; opacity:.4;
 }
 
-/* ══════════════════ MOBILE (Mockup Image 1) ══════════════════ */
+/* ══════════════════ MOBILE ══════════════════ */
 @media(max-width:900px){
-  nav { padding: 15px 20px; }
-  nav ul { display: none; }
-  
+  nav{
+    padding:12px 16px; flex-direction:column; align-items:center; gap:10px;
+    background:rgba(250,246,240,0.95);
+  }
+  nav ul{ gap:0; width:100%; justify-content:space-around; border-top:1px solid var(--border); padding-top:10px; }
+  nav ul li a{ font-size:12px; }
+
   .about-hero { grid-template-columns: 1fr; }
   .video-side { height: 40vh; }
   
   .content-side { padding: 40px 20px; }
-  .coach-profile-img { width: 200px; height: 200px; margin-bottom: -30px; }
+  .coach-profile-img { width: 220px; height: 220px; margin-bottom: -30px; }
   
-  .info-card { padding: 50px 25px 30px; }
+  .info-card { padding: 60px 25px 30px; }
+  .info-card h2 { font-size: 32px; }
+  
   #final { padding: 80px 20px; }
   #final .section-heading { font-size: 32px; }
 }
@@ -159,7 +178,7 @@ body::after{
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Indoor Fitness</a>
+  <div class="nav-logo">Indoor Fitness</div>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="results.html">Results</a></li>
@@ -190,7 +209,7 @@ body::after{
       </ul>
 
       <a href="#final" class="btn" style="background: var(--white); color: var(--black); border: none;">
-        Train With Me
+        <span>Train With Me</span>
       </a>
     </div>
   </div>
