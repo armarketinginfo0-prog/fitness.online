@@ -98,14 +98,9 @@ body::after{
   <h2>Client <span>Success</span></h2>
 </section>
 
-<div class="media-toggle">
-  <button class="tab-btn active" onclick="switchMedia('photos', event)">Photos</button>
-  <button class="tab-btn" onclick="switchMedia('videos', event)">Videos</button>
-</div>
-
 <div class="gallery-container">
   <div id="photos-grid" class="media-grid"></div>
-  <div id="videos-grid" class="media-grid hidden"></div>
+
 </div>
 
 <div class="btn-center">
@@ -135,41 +130,34 @@ body::after{
 </footer>
 
 <script>
-// 1. GENERATE PHOTOS
+// 1. GENERATE PHOTOS (ba1 to ba17)
 const photosGrid = document.getElementById('photos-grid');
-for (let i = 1; i <= 17; i++) {
-  photosGrid.innerHTML += `<div class="media-card"><img src="ba${i}.jpg" loading="lazy"></div>`;
-}
+const TOTAL_PHOTOS = 17;
 
-// 2. GENERATE VIDEOS (rewvid1 = mp4, others = mov)
-const videosGrid = document.getElementById('videos-grid');
-for (let i = 1; i <= 7; i++) {
-  const ext = (i === 1) ? 'mp4' : 'mov';
-  videosGrid.innerHTML += `
-    <div class="media-card">
-      <video class="res-video" playsinline controls preload="metadata" poster="ba${i}.jpg">
-        <source src="rewvid${i}.${ext}" type="video/${ext === 'mp4' ? 'mp4' : 'quicktime'}">
-      </video>
+for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+  photosGrid.innerHTML += `
+    <div class="media-card tilt">
+      <img src="ba${i}.jpg" loading="lazy" alt="Transformation ${i}">
     </div>`;
 }
 
-// 3. SWITCHER LOGIC
-function switchMedia(type, event) {
-  const pGrid = document.getElementById('photos-grid');
-  const vGrid = document.getElementById('videos-grid');
-  const btns = document.querySelectorAll('.tab-btn');
-  btns.forEach(btn => btn.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+// 2. TILT EFFECT (For high-end feel on desktop)
+document.querySelectorAll('.tilt').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(800px) rotateY(${x * 12}deg) rotateX(${-y * 8}deg) scale(1.02)`;
+  });
+  el.addEventListener('mouseleave', () => { 
+    el.style.transform = ''; 
+  });
+});
 
-  if (type === 'photos') {
-    vGrid.classList.add('hidden');
-    pGrid.classList.remove('hidden');
-    document.querySelectorAll('.res-video').forEach(v => v.pause());
-  } else {
-    pGrid.classList.add('hidden');
-    vGrid.classList.remove('hidden');
-  }
-}
+// 3. NAV SCROLL EFFECT
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
 </script>
 
 </body>
