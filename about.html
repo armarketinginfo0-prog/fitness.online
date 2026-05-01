@@ -3,275 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Coach | Indore Fitness</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+<title>About Kavitha | Indoor Fitness</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-html{scroll-behavior:smooth;}
-
-/* SAME THEME VARIABLES */
+/* ══════════════════ ROOT & RESET (Synced with Home) ══════════════════ */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; overflow-x:hidden; }
+body{ background:#faf6f0; color:#0a0908; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
 :root{
-  --red:#d6452f;
-  --black:#0f0f0f;
-  --gray:#6b6b6b;
-  --light:#f3efe8;
-  --lighter:#fbf8f2;
-  --card:#ffffff;
-  --border:#e8e2d9;
+  --red:#e03d22; --red-dark:#b52e15; --gold:#f5a623;
+  --cream:#faf6f0; --off:#f2ede6; --black:#0a0908; --dark:#0d0b0a;
+  --white:#fff; --gray:#7a7470; --border:rgba(224,61,34,0.1);
+  --glass:rgba(255,255,255,0.06); --glass-b:rgba(255,255,255,0.12);
+  --fd:'Syne',sans-serif;
 }
 
-body{
-  background:var(--lighter);
-  color:var(--black);
-}
-
-/* NAV — SAME AS HOME PAGE */
+/* ══════════════════ SHARED ELEMENTS ══════════════════ */
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:18px 70px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:var(--lighter);
+  position:fixed; top:0; width:100%; padding:20px 72px;
+  display:flex; justify-content:space-between; align-items:center;
+  z-index:1000; background:rgba(250,246,240,0.92); backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
-  z-index:1000;
-  transition:.35s;
 }
+.nav-logo{ font-family:var(--fd); font-size:22px; font-weight:800; color:var(--red); text-decoration:none; }
+nav ul{ list-style:none; display:flex; gap:36px; }
+nav ul li a{ text-decoration:none; color:var(--black); font-weight:500; font-size:14px; transition: .3s; }
+nav ul li a:hover{ color:var(--red); }
 
-nav.scrolled{
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  backdrop-filter:blur(6px);
-}
-
-nav h1{
-  font-size:26px;
-  font-weight:800;
-  color:var(--red);
-}
-
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:28px;
-}
-
-nav ul li a{
-  text-decoration:none;
-  color:#111;
-  font-weight:500;
-}
-
-nav ul li a:hover{
-  color:var(--red);
-}
-
-/* BUTTON — SAME AS HOME */
 .btn{
-  display:inline-block;
-  padding:16px 46px;
-  background:var(--red);
-  color:#fff;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:700;
-  transition:.3s;
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 40px; background:var(--red); color:#fff;
+  border-radius:4px; text-decoration:none;
+  font-size:14px; font-weight:600; letter-spacing:.8px; text-transform:uppercase;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  position:relative; overflow:hidden; border:1px solid var(--red);
+}
+.btn:hover{ background: var(--white); color: var(--red); }
+
+/* ══════════════════ MAIN LAYOUT (Mockup Inspired) ══════════════════ */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Image 2: Video on Left, Content on Right */
+  min-height: 100vh;
+  padding-top: 80px;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 14px 30px rgba(214,69,47,.35);
+.video-side {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
-/* PAGE HEADER */
-.page-header{
-  padding:120px 20px 30px;
-  text-align:center;
+.video-side video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.page-header h2{
-  font-size:44px;
-  font-weight:800;
+/* Red Overlay from Mockup */
+.video-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(224, 61, 34, 0.2), transparent);
 }
 
-.page-header span{
-  color:var(--red);
+.content-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  background: var(--cream);
+  position: relative;
 }
 
-/* ABOUT GRID */
-.about-section{
-  padding:60px 80px 120px;
+/* About Image (The Black Box in Mockup) */
+.coach-profile-img {
+  width: 280px;
+  height: 280px;
+  background: var(--black); /* Fallback */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: -40px; /* Overlaps the blue card slightly */
+  z-index: 2;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  transform: perspective(1000px) rotateY(-10deg);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.about-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:70px;
-  align-items:center;
+.coach-profile-img:hover {
+  transform: perspective(1000px) rotateY(0deg) scale(1.05);
 }
 
-/* TRAINER CARD */
-.trainer-card{
-  background:var(--card);
-  border-radius:30px;
-  padding:22px;
-  box-shadow:0 25px 60px rgba(0,0,0,.08);
-  border:1px solid var(--border);
-  animation:float 6s ease-in-out infinite;
-  max-width:420px;
+.coach-profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
+/* The Info Card (The Blue Box in Mockup) */
+.info-card {
+  background: #5d34f5; /* Using the purple-blue from your mockup */
+  padding: 80px 40px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  z-index: 1;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease;
+}
+.info-card:hover { transform: translateY(-5px); }
 
-/* MOBILE — compact coach card */
-.trainer-card{
-  max-width:240px;
-  margin:auto;
-  padding:14px;
-  border-radius:22px;
+.info-card h2 { font-family: var(--fd); font-size: 42px; margin-bottom: 15px; }
+.info-card p { opacity: 0.9; line-height: 1.8; margin-bottom: 25px; font-weight: 300; }
+
+.feature-list { list-style: none; margin-bottom: 30px; }
+.feature-list li { 
+  display: flex; align-items: center; gap: 10px; 
+  margin-bottom: 12px; font-size: 15px; 
+}
+.feature-list span { color: var(--gold); font-weight: bold; }
+
+/* ══════════════════ CTA SECTION (Direct from Home) ══════════════════ */
+#final{ background:var(--dark); padding:140px 80px; text-align:center; position:relative; overflow:hidden; }
+#final .section-heading{ font-family: var(--fd); font-size: 52px; color:#fff; margin-bottom: 20px; }
+#final .body-text{ color:rgba(255,255,255,.5); max-width:480px; margin:0 auto 48px; line-height: 1.6; }
+.cta-buttons{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* ══════════════════ GRAIN & DECO ══════════════════ */
+body::after{
+  content:""; position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9998; opacity:.4;
 }
 
-.trainer-card img{
-  height:220px;
-  border-radius:16px;
-}
-
-
-/* TEXT SIDE */
-.about-text h3{
-  font-size:36px;
-  font-weight:800;
-  margin-bottom:20px;
-}
-
-.about-text h3 span{
-  color:var(--red);
-}
-
-.about-text p{
-  color:var(--gray);
-  font-size:16px;
-  line-height:1.7;
-  margin-bottom:18px;
-}
-
-.about-list{
-  margin:26px 0;
-  list-style:none;
-}
-
-.about-list li{
-  margin-bottom:14px;
-  font-size:17px;
-  font-weight:500;
-}
-
-/* ANIMATIONS */
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-  100%{transform:translateY(0);}
-}
-
-/* FOOTER */
-footer{
-  background:#111;
-  color:#ddd;
-  text-align:center;
-  padding:26px;
-}
-
-/* MOBILE */
+/* ══════════════════ MOBILE (Mockup Image 1) ══════════════════ */
 @media(max-width:900px){
-  .about-grid{
-    grid-template-columns:9fr;
-  }
-
-  .about-section{
-    padding:20px 18px 70px;
-  }
-.about-text h3{
-  font-size:26px;
+  nav { padding: 15px 20px; }
+  nav ul { display: none; }
+  
+  .about-hero { grid-template-columns: 1fr; }
+  .video-side { height: 40vh; }
+  
+  .content-side { padding: 40px 20px; }
+  .coach-profile-img { width: 200px; height: 200px; margin-bottom: -30px; }
+  
+  .info-card { padding: 50px 25px 30px; }
+  #final { padding: 80px 20px; }
+  #final .section-heading { font-size: 32px; }
 }
-
-  .trainer-card img{
-    height:300px;
-  }
-  .trainer-card{
-  max-width:360px;
-  margin:auto;
-}
-nav{
-  flex-direction:column;
-  gap:10px;
-  padding:16px 20px;
-}
-
-nav ul{
-  width:100%;
-  justify-content:space-between;
-}
-
-}
-/* ===== FLOATING CONTACT BAR ===== */
-.float-bar{
-  position:fixed;
-  right:18px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  z-index:2000;
-}
-
-.float-btn{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--red);
-  box-shadow:0 10px 25px rgba(0,0,0,.18);
-  transition:.25s;
-}
-
-.float-btn:hover{
-  transform:scale(1.12);
-}
-
-.float-btn svg{
-  width:26px;
-  height:26px;
-  fill:#fff;
-}
-
-/* smaller on mobile */
-@media(max-width:900px){
-  .float-btn{
-    width:48px;
-    height:48px;
-  }
-
-  .float-btn svg{
-    width:22px;
-    height:22px;
-  }
-}
-
 </style>
 </head>
-
 <body>
 
 <nav>
-  <h1>Indore Fitness</h1>
-
+  <a href="index.html" class="nav-logo">Indoor Fitness</a>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="results.html">Results</a></li>
@@ -279,93 +167,53 @@ nav ul{
   </ul>
 </nav>
 
-<!-- HEADER -->
-<section class="page-header">
-  <h2>About <span>Your Coach</span></h2>
-</section>
-
-<!-- ABOUT CONTENT -->
-<section class="about-section">
-
-  <div class="about-grid">
-
-    <!-- LEFT IMAGE -->
-    <div class="trainer-card">
-      <img src="trainer.jpg" alt="Coach Photo">
-    </div>
-
-    <!-- RIGHT TEXT -->
-    <div class="about-text">
-
-      <h3>Hi, I’m <span>Kavitha</span></h3>
-
-      <p>
-        I help women get fit in a simple, realistic and sustainable way.
-        No extreme methods. No crash programs. Just smart training and consistency.
-      </p>
-
-      <p>
-        My coaching focuses on real-life routines that busy women can follow
-        without stress, confusion, or gym intimidation.
-      </p>
-
-      <ul class="about-list">
-        <li>✔ Certified Fitness Trainer & Diet Coach</li>
-        <li>✔ Specialized in Women Fat Loss</li>
-        <li>✔ Designed for busy schedules</li>
-        <li>✔ Suitable for all age groups</li>
-      </ul>
-
-      <a href="index.html#final" class="btn">Train With Me</a>
-
-    </div>
-
+<section class="about-hero">
+  <div class="video-side">
+    <video autoplay muted loop playsinline>
+      <source src="aboutvid.mp4" type="video/mp4">
+    </video>
   </div>
 
+  <div class="content-side">
+    <div class="coach-profile-img">
+      <img src="aboutimg.jpg" alt="Coach Kavitha">
+    </div>
+
+    <div class="info-card">
+      <h2>Hi, I’m Kavitha</h2>
+      <p>I help women get fit in a simple, realistic and sustainable way. No extreme methods. No crash programs. Just smart training and consistency.</p>
+      
+      <ul class="feature-list">
+        <li><span>✦</span> Certified Fitness Trainer</li>
+        <li><span>✦</span> Specialized in Women Fat Loss</li>
+        <li><span>✦</span> Designed for Busy Schedules</li>
+      </ul>
+
+      <a href="#final" class="btn" style="background: var(--white); color: var(--black); border: none;">
+        Train With Me
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="final">
+  <h2 class="section-heading">Start your fitness<br>journey today</h2>
+  <p class="body-text">Message us directly — we reply fast and we're ready to help you transform.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/919500644455" class="btn">
+      <span>Chat on WhatsApp</span>
+    </a>
+    <a href="https://www.instagram.com/kavitha_onlinefitness" class="btn" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border:none;">
+      <span>Message on Instagram</span>
+    </a>
+  </div>
 </section>
 
 <footer>
-  © 2026 Indore Fitness • Women Only Online Fitness Studio
+  <p style="text-align:center; padding: 40px; color: var(--gray); font-size: 13px;">
+    © 2026 Indoor Fitness · Women Only Online Fitness Studio
+  </p>
 </footer>
 
-<!-- ===== FLOATING CONTACT BUTTONS ===== -->
-<div class="float-bar">
-
-  <!-- CALL -->
-  <a class="float-btn" href="tel:+911234567890">
-    <svg viewBox="0 0 24 24">
-      <path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.25c1.1.3 2.3.45 3.6.45a1 1 0 011 1V21a1 1 0 01-1 1C11 22 2 13 2 2a1 1 0 011-1h3.6a1 1 0 011 1c0 1.3.15 2.5.45 3.6a1 1 0 01-.25 1z"/>
-    </svg>
-  </a>
-
-  <!-- INSTAGRAM -->
-  <a class="float-btn" href="https://instagram.com/yourprofile" target="_blank">
-    <svg viewBox="0 0 24 24">
-      <path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.8a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/>
-    </svg>
-  </a>
-
-  <!-- FACEBOOK -->
-  <a class="float-btn" href="https://facebook.com/yourpage" target="_blank">
-    <svg viewBox="0 0 24 24">
-      <path d="M13 22v-8h3l1-4h-4V7c0-1.1.3-2 2-2h2V1.5S15.5 1 14 1c-3 0-5 2-5 5v3H6v4h3v8z"/>
-    </svg>
-  </a>
-
-</div>
-
-
 </body>
-
-<script>
-document.addEventListener("scroll",()=>{
-  if(window.scrollY > 40){
-    document.querySelector("nav").classList.add("scrolled");
-  } else {
-    document.querySelector("nav").classList.remove("scrolled");
-  }
-});
-</script>
-
 </html>
-
