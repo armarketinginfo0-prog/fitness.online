@@ -3,259 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Results | Indore Fitness</title>
+<title>Transformations | Indoor Fitness</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-html{scroll-behavior:smooth;}
-
-/* SAME THEME */
+/* ══════════════════ ROOT & RESET ══════════════════ */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; overflow-x:hidden; }
+body{ background:#faf6f0; color:#0a0908; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
 :root{
-  --red:#d6452f;
-  --black:#0f0f0f;
-  --gray:#6b6b6b;
-  --light:#f3efe8;
-  --lighter:#fbf8f2;
-  --card:#ffffff;
-  --border:#e8e2d9;
+  --red:#e03d22; --gold:#f5a623; --cream:#faf6f0; --dark:#0d0b0a;
+  --white:#fff; --gray:#7a7470; --border:rgba(224,61,34,0.1);
+  --fd:'Syne',sans-serif;
 }
 
-body{
-  background:var(--lighter);
-  color:var(--black);
-}
-
-/* NAV */
+/* ══════════════════ NAV ══════════════════ */
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:18px 70px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:var(--lighter);
+  position:fixed; top:0; width:100%; padding:20px 72px;
+  display:flex; justify-content:space-between; align-items:center;
+  z-index:1000; background:rgba(250,246,240,0.92); backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
-  z-index:1000;
+}
+.nav-logo{ font-family:var(--fd); font-size:22px; font-weight:800; color:var(--red); text-decoration:none; }
+nav ul{ list-style:none; display:flex; gap:36px; }
+nav ul li a{ text-decoration:none; color:var(--black); font-weight:500; font-size:14px; }
+
+/* ══════════════════ HEADER & TABS ══════════════════ */
+.header{ padding:160px 20px 40px; text-align:center; }
+.header h2{ font-family:var(--fd); font-size:52px; font-weight:800; letter-spacing:-2.5px; }
+.header h2 span{ color: var(--red); }
+
+.media-toggle { display: flex; justify-content: center; gap: 12px; margin: 30px 0 30px; }
+.tab-btn {
+  padding: 14px 34px; border: 1.5px solid var(--red); background: transparent;
+  color: var(--red); font-family: var(--fd); font-weight: 700; cursor: pointer;
+  border-radius: 50px; text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px;
+}
+.tab-btn.active { background: var(--red); color: #fff; }
+
+/* ══════════════════ GALLERY ══════════════════ */
+.gallery-container { max-width: 1100px; margin: auto; padding: 0 20px 60px; }
+.media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.media-grid.hidden { display: none; }
+
+.media-card { border-radius: 2px; overflow: hidden; background: #000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); position: relative; }
+.media-card img, .media-card video { width: 100%; height: 480px; object-fit: cover; display: block; }
+
+/* ══════════════════ BUTTONS ══════════════════ */
+.btn-center { display: flex; justify-content: center; margin-bottom: 80px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; padding: 15px 40px;
+  background: var(--red); color: #fff; border-radius: 4px; text-decoration: none;
+  font-size: 14px; font-weight: 600; text-transform: uppercase; border: 1px solid var(--red);
+  transition: all .35s ease;
+}
+.btn:hover { background: #fff; color: var(--red); }
+
+/* ══════════════════ CTA SECTION ══════════════════ */
+#final{ background:var(--dark); padding:140px 80px; text-align:center; position:relative; overflow:hidden; }
+#final h2{ font-family:var(--fd); font-size:52px; color:#fff; margin-bottom: 20px; }
+#final p{ color:rgba(255,255,255,.5); max-width:480px; margin:0 auto 48px; line-height: 1.6; }
+.cta-buttons{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* GRAIN OVERLAY */
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity:.4;
 }
 
-/* NAV — SAME AS HOME PAGE */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:18px 70px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:var(--lighter);
-  border-bottom:1px solid var(--border);
-  z-index:1000;
-  transition:.35s;
-}
-
-nav.scrolled{
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  backdrop-filter:blur(6px);
-}
-
-nav h1{
-  font-size:26px;
-  font-weight:800;
-  color:var(--red);
-}
-
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:28px;
-}
-
-nav ul li a{
-  text-decoration:none;
-  color:#111;
-  font-weight:500;
-}
-
-nav ul li a:hover{
-  color:var(--red);
-}
-
-
-/* HEADER */
-.header{
-  padding:160px 20px 50px;
-  text-align:center;
-}
-
-.header h2{
-  font-size:44px;
-  font-weight:800;
-}
-
-.header span{
-  color:var(--red);
-}
-
-.header p{
-  color:var(--gray);
-  margin-top:12px;
-}
-
-/* GALLERY */
-.gallery{
-  padding:40px 80px 120px;
-}
-
-.gallery-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
-}
-
-/* IMAGE CARD */
-.img-card{
-  position:relative;
-  border-radius:22px;
-  overflow:hidden;
-  background:#000;
-  box-shadow:0 18px 40px rgba(0,0,0,.12);
-  transform:translateY(40px);
-  opacity:0;
-  transition:.6s ease;
-}
-
-.img-card.active{
-  transform:none;
-  opacity:1;
-}
-
-.img-card img{
-  width:100%;
-  height:420px;
-  object-fit:cover;
-  display:block;
-  transition:.5s ease;
-}
-
-/* HOVER EFFECT */
-.img-card:hover img{
-  transform:scale(1.08);
-  filter:contrast(1.05) saturate(1.05);
-}
-
-.img-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.25), transparent);
-  opacity:.7;
-}
-
-/* FOOTER */
-footer{
-  background:#111;
-  color:#ddd;
-  text-align:center;
-  padding:26px;
-}
-
-/* MOBILE */
 @media(max-width:900px){
-/* MOBILE NAV — same as home */
-nav{
-  flex-direction:column;
-  gap:12px;
-  padding:16px 20px;
+  nav{ padding:12px 16px; flex-direction:column; }
+  nav ul{ width:100%; justify-content:space-around; }
+  .media-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .media-card img, .media-card video { height: 280px; }
+  #final { padding: 80px 20px; }
+  #final h2 { font-size: 32px; }
 }
-
-nav ul{
-  width:100%;
-  justify-content:space-between;
-  gap:0;
-}
-
-nav ul li{
-  flex:1;
-  text-align:center;
-}
-
-  .gallery{
-    padding:40px 30px 100px;
-  }
-
-  .gallery-grid{
-  grid-template-columns:1fr 1fr;
-}
-
-
-  .img-card img{
-    height:220px;
-  }
-  .gallery-grid{
-  gap:16px;
-}
-
-}
-/* ===== FLOATING CONTACT BAR ===== */
-.float-bar{
-  position:fixed;
-  right:18px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  z-index:2000;
-}
-
-.float-btn{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--red);
-  box-shadow:0 10px 25px rgba(0,0,0,.18);
-  transition:.25s;
-}
-
-.float-btn:hover{
-  transform:scale(1.12);
-}
-
-.float-btn svg{
-  width:26px;
-  height:26px;
-  fill:#fff;
-}
-
-/* smaller on mobile */
-@media(max-width:900px){
-  .float-btn{
-    width:48px;
-    height:48px;
-  }
-
-  .float-btn svg{
-    width:22px;
-    height:22px;
-  }
-}
-
 </style>
 </head>
-
 <body>
 
 <nav>
-  <h1>Indore Fitness</h1>
-
+  <a href="index.html" class="nav-logo">Indoor Fitness</a>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="results.html">Results</a></li>
@@ -263,98 +94,83 @@ nav ul li{
   </ul>
 </nav>
 
-
-<!-- HEADER -->
 <section class="header">
-  <h2>Client <span>Results</span></h2>
-  <p>Real women. Real transformations. Real progress.</p>
+  <h2>Client <span>Success</span></h2>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery">
+<div class="media-toggle">
+  <button class="tab-btn active" onclick="switchMedia('photos', event)">Photos</button>
+  <button class="tab-btn" onclick="switchMedia('videos', event)">Videos</button>
+</div>
 
-  <div class="gallery-grid">
+<div class="gallery-container">
+  <div id="photos-grid" class="media-grid"></div>
+  <div id="videos-grid" class="media-grid hidden"></div>
+</div>
 
-    <!-- IMAGE -->
-    <div class="img-card"><img src="r1.jpg"></div>
-    <div class="img-card"><img src="r2.jpg"></div>
-    <div class="img-card"><img src="r3.jpg"></div>
+<div class="btn-center">
+  <a href="https://share.google/2JT9GlAFPYUVRmhnc" target="_blank" class="btn">
+    <span>More Reviews</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
 
-    <div class="img-card"><img src="r4.jpg"></div>
-    <div class="img-card"><img src="r5.jpg"></div>
-    <div class="img-card"><img src="r6.jpg"></div>
-
+<section id="final">
+  <h2 class="section-heading">Start your fitness<br>journey today</h2>
+  <p>Message us directly — we reply fast and we're ready to help you transform.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/919500644455" class="btn">
+      <span>Chat on WhatsApp</span>
+    </a>
+    <a href="https://www.instagram.com/kavitha_onlinefitness" class="btn" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border:none;">
+      <span>Message on Instagram</span>
+    </a>
   </div>
-
 </section>
 
 <footer>
-  © 2026 Indore Fitness • Women Only Online Fitness Studio
+  <p style="text-align:center; padding: 40px; color: var(--gray); font-size: 13px;">
+    © 2026 Indoor Fitness · Women Only Online Fitness Studio · Chennai, India
+  </p>
 </footer>
 
 <script>
-/* reveal animation */
-const cards = document.querySelectorAll(".img-card");
-
-function reveal(){
-  cards.forEach(c=>{
-    if(c.getBoundingClientRect().top < window.innerHeight - 80){
-      c.classList.add("active");
-    }
-  });
+// 1. GENERATE PHOTOS
+const photosGrid = document.getElementById('photos-grid');
+for (let i = 1; i <= 17; i++) {
+  photosGrid.innerHTML += `<div class="media-card"><img src="ba${i}.jpg" loading="lazy"></div>`;
 }
 
-window.addEventListener("scroll", reveal);
-reveal();
-</script>
-<script>
-document.addEventListener("scroll",()=>{
-  if(window.scrollY > 40){
-    document.querySelector("nav").classList.add("scrolled");
+// 2. GENERATE VIDEOS (rewvid1 = mp4, others = mov)
+const videosGrid = document.getElementById('videos-grid');
+for (let i = 1; i <= 7; i++) {
+  const ext = (i === 1) ? 'mp4' : 'mov';
+  videosGrid.innerHTML += `
+    <div class="media-card">
+      <video class="res-video" playsinline controls preload="metadata" poster="ba${i}.jpg">
+        <source src="rewvid${i}.${ext}" type="video/${ext === 'mp4' ? 'mp4' : 'quicktime'}">
+      </video>
+    </div>`;
+}
+
+// 3. SWITCHER LOGIC
+function switchMedia(type, event) {
+  const pGrid = document.getElementById('photos-grid');
+  const vGrid = document.getElementById('videos-grid');
+  const btns = document.querySelectorAll('.tab-btn');
+  btns.forEach(btn => btn.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  if (type === 'photos') {
+    vGrid.classList.add('hidden');
+    pGrid.classList.remove('hidden');
+    document.querySelectorAll('.res-video').forEach(v => v.pause());
   } else {
-    document.querySelector("nav").classList.remove("scrolled");
+    pGrid.classList.add('hidden');
+    vGrid.classList.remove('hidden');
   }
-});
+}
 </script>
-
-<!-- ===== FLOATING CONTACT BUTTONS ===== -->
-<div class="float-bar">
-
-  <!-- CALL -->
-  <a class="float-btn" href="tel:+911234567890">
-    <svg viewBox="0 0 24 24">
-      <path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.25c1.1.3 2.3.45 3.6.45a1 1 0 011 1V21a1 1 0 01-1 1C11 22 2 13 2 2a1 1 0 011-1h3.6a1 1 0 011 1c0 1.3.15 2.5.45 3.6a1 1 0 01-.25 1z"/>
-    </svg>
-  </a>
-
-  <!-- INSTAGRAM -->
-  <a class="float-btn" href="https://instagram.com/yourprofile" target="_blank">
-    <svg viewBox="0 0 24 24">
-      <path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.8a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/>
-    </svg>
-  </a>
-
-  <!-- FACEBOOK -->
-  <a class="float-btn" href="https://facebook.com/yourpage" target="_blank">
-    <svg viewBox="0 0 24 24">
-      <path d="M13 22v-8h3l1-4h-4V7c0-1.1.3-2 2-2h2V1.5S15.5 1 14 1c-3 0-5 2-5 5v3H6v4h3v8z"/>
-    </svg>
-  </a>
-
-</div>
-
 
 </body>
-
-<script>
-document.addEventListener("scroll",()=>{
-  if(window.scrollY > 40){
-    document.querySelector("nav").classList.add("scrolled");
-  } else {
-    document.querySelector("nav").classList.remove("scrolled");
-  }
-});
-</script>
-
 </html>
-
