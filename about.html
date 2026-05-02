@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indoor Fitness | Women Only Online Fitness</title>
+<title>About Kavitha | Indoor Fitness</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════ RESET & ROOT ══════════════════ */
+/* ══════════════════ RESET & ROOT (Synced with Home) ══════════════════ */
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; overflow-x:hidden; }
 body{ background:#faf6f0; color:#0a0908; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
@@ -18,56 +18,19 @@ body{ background:#faf6f0; color:#0a0908; font-family:'DM Sans',sans-serif; overf
   --fd:'Syne',sans-serif;
 }
 
-/* ══════════════════ LOADER ══════════════════ */
-#loader{
-  position:fixed; inset:0; background:var(--dark);
-  display:flex; align-items:center; justify-content:center;
-  z-index:9999; transition:opacity .8s ease, visibility .8s ease;
-}
-#loader.hidden{ opacity:0; visibility:hidden; }
-.loader-ring{
-  width:90px; height:90px; border-radius:50%;
-  border:2px solid rgba(255,255,255,0.08); border-top:2px solid var(--red);
-  animation:spin 1s linear infinite; margin:0 auto 24px; position:relative;
-}
-.loader-ring::after{
-  content:""; position:absolute; inset:8px; border-radius:50%;
-  border:1px solid rgba(245,166,35,0.3); border-bottom:1px solid var(--gold);
-  animation:spin 1.5s linear infinite reverse;
-}
-.loader-logo{ font-family:var(--fd); font-size:26px; font-weight:800; color:#fff; text-align:center; }
-.loader-logo span{ color:var(--red); }
-.loader-sub{ font-size:10px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:6px; text-align:center; }
-@keyframes spin{ to{ transform:rotate(360deg); } }
-
-/* ══════════════════ PAGE CURTAIN ══════════════════ */
-.page-curtain{
-  position:fixed; inset:0; z-index:8000; background:var(--red);
-  clip-path:polygon(0 0,0 0,0 100%,0 100%);
-  transition:clip-path .6s cubic-bezier(.77,0,.18,1); pointer-events:none;
-}
-.page-curtain.active{ clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
-
 /* ══════════════════ NAV ══════════════════ */
 nav{
   position:fixed; top:0; width:100%; padding:20px 72px;
   display:flex; justify-content:space-between; align-items:center;
   z-index:1000; transition:all .4s ease;
-}
-nav::before{
-  content:""; position:absolute; inset:0;
-  background:rgba(250,246,240,0); backdrop-filter:blur(0px);
-  border-bottom:1px solid transparent; transition:all .4s ease; z-index:-1;
-}
-nav.scrolled::before{
   background:rgba(250,246,240,0.92); backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{ font-family:var(--fd); font-size:22px; font-weight:800; color:var(--red); }
+.nav-logo{ font-family:var(--fd); font-size:22px; font-weight:800; color:var(--red); text-decoration:none; }
 nav ul{ list-style:none; display:flex; gap:36px; }
 nav ul li a{
   text-decoration:none; color:var(--black); font-weight:500; font-size:14px;
-  position:relative; padding-bottom:3px;
+  position:relative; padding-bottom:3px; transition: .3s;
 }
 nav ul li a::after{
   content:""; position:absolute; bottom:0; left:0;
@@ -75,33 +38,6 @@ nav ul li a::after{
 }
 nav ul li a:hover{ color:var(--red); }
 nav ul li a:hover::after{ width:100%; }
-
-/* ══════════════════ SHARED TYPOGRAPHY ══════════════════ */
-section{ padding:120px 80px; }
-.center{ text-align:center; }
-.section-label{
-  font-size:11px; letter-spacing:4px; text-transform:uppercase;
-  color:var(--red); font-weight:600; margin-bottom:16px;
-  display:inline-flex; align-items:center; gap:10px;
-}
-.section-label::before{ content:""; width:28px; height:1.5px; background:currentColor; flex-shrink:0; }
-.center .section-label{ justify-content:center; }
-.section-heading{ font-family:var(--fd); font-size:52px; font-weight:800; line-height:1.04; letter-spacing:-1.5px; margin-bottom:24px; }
-.subheading{ font-family:var(--fd); font-size:19px; font-weight:700; margin-bottom:10px; }
-.body-text{ font-size:15px; color:var(--gray); line-height:1.75; font-weight:300; }
-.highlight{ color:var(--red); }
-
-/* ══════════════════ REVEAL ANIMATIONS ══════════════════ */
-.reveal{ opacity:0; transform:translateY(50px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
-.reveal.active{ opacity:1; transform:none; }
-.reveal-left{ opacity:0; transform:translateX(-60px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
-.reveal-left.active{ opacity:1; transform:none; }
-.reveal-right{ opacity:0; transform:translateX(60px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
-.reveal-right.active{ opacity:1; transform:none; }
-.stagger-1{ transition-delay:.05s !important; }
-.stagger-2{ transition-delay:.15s !important; }
-.stagger-3{ transition-delay:.25s !important; }
-.stagger-4{ transition-delay:.35s !important; }
 
 /* ══════════════════ BUTTONS ══════════════════ */
 .btn{
@@ -118,406 +54,96 @@ section{ padding:120px 80px; }
 }
 .btn:hover{ color:var(--red); }
 .btn:hover::before{ transform:translateX(0); }
-.btn:hover .btn-arrow{ transform:translateX(4px); }
 .btn span, .btn > svg{ position:relative; z-index:1; }
-.btn-arrow{ width:16px; height:16px; transition:transform .3s ease; position:relative; z-index:1; }
-.btn-outline{ background:transparent; color:var(--black); border-color:var(--black); }
-.btn-outline::before{ background:var(--black); }
-.btn-outline:hover{ color:var(--white); }
-.btn-dark{ background:var(--white); color:var(--black); border-color:var(--white); }
-.btn-dark::before{ background:var(--off); }
-.btn-dark:hover{ color:var(--black); }
 
-/* ══════════════════ CARDS ══════════════════ */
-.card{
-  padding:44px 36px; border-radius:2px; background:#fff;
-  border:1px solid rgba(0,0,0,0.07);
-  transition:all .4s cubic-bezier(.2,.8,.2,1); position:relative; overflow:hidden;
+/* ══════════════════ MAIN LAYOUT (Mockup Inspired) ══════════════════ */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  padding-top: 80px;
 }
 
-/* Updated for visibility: Light Card Numbers (01, 02, 03, R, C, S, ★) */
-.card .card-num { 
-  font-family: var(--fd); 
-  font-size: 72px; 
-  font-weight: 800; 
-  color: rgba(224, 61, 34, 0.15); /* Increased from 0.08 for better contrast */
-  line-height: 1; 
-  margin-bottom: 20px; 
+.video-side {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
-.dark-card{
-  background:var(--glass); border:1px solid var(--glass-b);
-  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-  padding:40px 32px; border-radius:2px;
-  transition:all .4s cubic-bezier(.2,.8,.2,1); position:relative; overflow:hidden;
+.video-side video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Updated for visibility: Dark Card Numbers (01, 02, 03) */
-.dark-card .card-num { 
-  font-family: var(--fd); 
-  font-size: 72px; 
-  font-weight: 800; 
-  color: rgba(255, 255, 255, 0.12); /* Changed from red to white-transparent to pop on dark background */
-  line-height: 1; 
-  margin-bottom: 20px; 
+.video-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(224, 61, 34, 0.2), transparent);
 }
 
-/* ══════════════════ GRID HELPERS ══════════════════ */
-.three-col{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1100px; margin:0 auto; }
-.value-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto; }
-.tilt{ transform-style:preserve-3d; will-change:transform; }
-
-/* ══════════════════ HERO ══════════════════ */
-#hero{
-  padding-top:160px; padding-bottom:120px; background:var(--cream);
-  position:relative; overflow:hidden; min-height:100vh; display:flex; align-items:center;
-}
-#hero::before{
-  content:""; position:absolute; top:0; right:0; width:55%; height:100%;
-  background:var(--off); clip-path:polygon(12% 0,100% 0,100% 100%,0 100%); z-index:0;
-}
-.hero-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
-  max-width:1260px; margin:0 auto; position:relative; z-index:1; width:100%;
-}
-.hero-text{ padding-right:20px; }
-.hero-eyebrow{
-  display:inline-flex; align-items:center; gap:10px;
-  background:rgba(224,61,34,.08); border:1px solid rgba(224,61,34,.2);
-  padding:7px 16px; border-radius:2px;
-  font-size:11px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--red); font-weight:600; margin-bottom:28px;
-}
-.hero-eyebrow::before{
-  content:""; width:6px; height:6px; border-radius:50%; background:var(--red);
-  animation:pulsedot 2s ease-in-out infinite;
-}
-@keyframes pulsedot{ 0%,100%{ transform:scale(1); opacity:1; } 50%{ transform:scale(1.5); opacity:.5; } }
-.hero-heading{
-  font-family:var(--fd); font-size:68px; font-weight:800;
-  line-height:.98; letter-spacing:-2px; color:var(--black); margin-bottom:28px;
-  /* LEFT ALIGNED */
-  text-align:left;
-}
-.hero-heading em{
-  font-style:normal; color:var(--red); position:relative; display:inline-block;
-}
-.hero-heading em::after{
-  content:""; position:absolute; bottom:-4px; left:0; right:0;
-  height:3px; background:linear-gradient(90deg,var(--red),var(--gold)); border-radius:2px;
-}
-/* LEFT ALIGNED hero text block */
-.hero-desc{
-  font-size:16px; color:var(--gray); line-height:1.7; max-width:420px; margin-bottom:40px;
-  text-align:left;
-}
-.hero-stats{ display:flex; gap:36px; margin-top:48px; padding-top:40px; border-top:1px solid rgba(0,0,0,.08); }
-.hero-stat-num{ font-family:var(--fd); font-size:36px; font-weight:800; color:var(--black); letter-spacing:-1px; display:block; }
-.hero-stat-label{ font-size:12px; color:var(--gray); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; font-weight:500; }
-.hero-video-wrap{ position:relative; }
-.hero-deco-line{
-  position:absolute; left:-40px; top:50%; transform:translateY(-50%);
-  width:2px; height:140px; background:linear-gradient(to bottom,transparent,var(--red),transparent);
-}
-.hero-video-frame{
-  border-radius:4px; overflow:hidden; position:relative; background:#000;
-  box-shadow:0 2px 4px rgba(0,0,0,.04),0 8px 16px rgba(0,0,0,.08),0 32px 64px rgba(0,0,0,.12);
-  transform:perspective(800px) rotateY(-4deg) rotateX(2deg);
-  transition:transform .6s cubic-bezier(.2,.8,.2,1);
-}
-.hero-video-frame:hover{ transform:perspective(800px) rotateY(-1deg) rotateX(0) scale(1.01); }
-.hero-video-frame video{ width:100%; height:auto; max-height:560px; object-fit:cover; display:block; background:#000; }
-.hero-video-badge{
-  position:absolute; top:-16px; right:-16px;
-  background:var(--red); color:#fff; width:80px; height:80px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center; flex-direction:column;
-  font-family:var(--fd); box-shadow:0 12px 30px rgba(224,61,34,.4);
-  animation:bspin 12s linear infinite;
-}
-.hero-video-badge span{ font-size:18px; font-weight:800; animation:bspin 12s linear infinite reverse; }
-.hero-video-badge small{ font-size:8px; letter-spacing:1px; text-transform:uppercase; animation:bspin 12s linear infinite reverse; }
-@keyframes bspin{ to{ transform:rotate(360deg); } }
-.hero-mobile-btn{ display:none; }
-.hero-desktop-btn{ display:inline-flex; }
-
-/* ══════════════════ TICKER ══════════════════ */
-.ticker-wrap{
-  background:var(--red); padding:14px 0; overflow:hidden;
-  border-top:1px solid rgba(255,255,255,.15); border-bottom:1px solid rgba(255,255,255,.15);
-}
-.ticker-track{ display:flex; animation:ticker 25s linear infinite; width:max-content; }
-.ticker-item{
-  font-family:var(--fd); font-size:13px; font-weight:700; color:#fff;
-  letter-spacing:2px; text-transform:uppercase; padding:0 32px; white-space:nowrap;
-  display:flex; align-items:center; gap:16px;
-}
-.ticker-item::after{ content:"✦"; opacity:.5; }
-@keyframes ticker{ to{ transform:translateX(-50%); } }
-
-/* ══════════════════ RESULTS + SERVICES ══════════════════ */
-#results-services{
-  background:var(--off); padding:160px 80px;
-  clip-path:polygon(0 0,100% 40px,100% 100%,0 calc(100% - 40px));
-}
-.results-grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:center; max-width:1260px; margin:0 auto; }
-.ba-stack{ position:relative; height:420px; }
-.ba-item{
-  position:absolute; border-radius:4px; overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,.15); transition:all .4s cubic-bezier(.2,.8,.2,1);
-}
-.ba-item:nth-child(1){ width:56%; left:0; top:0; transform:perspective(600px) rotateY(3deg) rotateX(-2deg); z-index:2; }
-.ba-item:nth-child(2){ width:56%; right:0; bottom:0; transform:perspective(600px) rotateY(-3deg) rotateX(2deg); z-index:1; }
-.ba-item:hover{ transform:perspective(600px) rotateY(0) rotateX(0) scale(1.02); z-index:10; }
-.ba-item img{ width:100%; height:260px; object-fit:cover; display:block; }
-.ba-label{
-  position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(to top,rgba(0,0,0,.75),transparent);
-  padding:20px 16px 14px; font-family:var(--fd); font-size:13px; font-weight:700;
-  color:#fff; letter-spacing:2px; text-transform:uppercase;
-}
-.services-wrapper{ padding-left:48px; border-left:2px solid var(--red); }
-.services-wrapper .section-heading{ margin-bottom:32px; }
-.services-list{ list-style:none; margin-top:24px; display:flex; flex-direction:column; gap:2px; }
-.services-list li{
-  display:flex; align-items:center; gap:16px; padding:14px 20px; background:#fff;
-  border:1px solid rgba(0,0,0,.06); font-size:15px; font-weight:500;
-  transition:all .3s ease; cursor:default;
-}
-.services-list li:hover{ background:var(--red); color:#fff; transform:translateX(8px); border-color:var(--red); }
-.services-list li:hover .svc-check{ background:rgba(255,255,255,.2); }
-.services-list li:hover .svc-check svg{ stroke:#fff; }
-.svc-check{
-  width:28px; height:28px; border-radius:50%; background:rgba(224,61,34,.08);
-  display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:.3s ease;
-}
-.svc-check svg{ width:14px; height:14px; stroke:var(--red); stroke-width:2.5; fill:none; }
-
-/* ══════════════════════════════════════════════════════
-   RESULTS PREVIEW — 2 COLUMNS × 3 ROWS
-══════════════════════════════════════════════════════ */
-#results-preview{ background:var(--cream); padding:120px 80px; }
-
-.results-preview-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);   /* ← 2 columns */
-  grid-template-rows:repeat(3,320px);    /* ← 3 rows */
-  gap:16px;
-  max-width:900px;
-  margin:0 auto 50px;
-}
-.rp-box{
-  border-radius:2px; overflow:hidden;
-  box-shadow:0 4px 20px rgba(0,0,0,.08);
-  transition:all .4s cubic-bezier(.2,.8,.2,1);
-  position:relative; cursor:pointer;
-}
-.rp-box::after{
-  content:"→"; position:absolute; inset:0;
-  background:rgba(224,61,34,.85); color:#fff; font-family:var(--fd);
-  font-size:28px; font-weight:800;
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; transition:.35s ease;
-}
-.rp-box:hover{ transform:scale(1.03); box-shadow:0 20px 50px rgba(0,0,0,.18); }
-.rp-box:hover::after{ opacity:1; }
-.rp-box img{
-  width:100%; height:100%; object-fit:cover; display:block;
-  transition:transform .5s ease, opacity .4s ease;
-}
-.rp-box:hover img{ transform:scale(1.08); }
-.rp-box img.fading{ opacity:0; }
-.rp-box img.visible{ opacity:1; }
-
-/* ══════════════════════════════════════════════════════
-   TESTIMONIALS — MASONRY / VARIABLE SIZE LAYOUT
-   Images shown at natural aspect ratio, variable heights
-══════════════════════════════════════════════════════ */
-#testimonials{ background:var(--dark); padding:120px 0; overflow:hidden; position:relative; }
-#testimonials::before{
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(ellipse 60% 40% at 20% 50%,rgba(224,61,34,.06) 0%,transparent 70%),
-             radial-gradient(ellipse 40% 60% at 80% 30%,rgba(245,166,35,.04) 0%,transparent 70%);
-  pointer-events:none;
-}
-.testimonials-header{ padding:0 80px; margin-bottom:60px; }
-.testimonials-header .section-heading{ color:#fff; margin-bottom:0; }
-.testimonials-header .section-label{ color:var(--gold); }
-
-.testimonial-wall{
-  display:flex; flex-direction:column; gap:20px; overflow:hidden;
-  mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);
-  -webkit-mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);
-}
-.t-row{ display:flex; gap:16px; align-items:flex-start; width:max-content; }
-.t-row-1{ animation:marqueeL 30s linear infinite; }
-.t-row-2{ animation:marqueeR 38s linear infinite; }
-@keyframes marqueeL{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
-@keyframes marqueeR{ 0%{ transform:translateX(-50%); } 100%{ transform:translateX(0); } }
-.testimonial-wall:hover .t-row{ animation-play-state:paused; }
-
-/* Variable size cards — no cropping, no forced dimensions */
-.t-card{
-  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
-  border-radius:4px; overflow:hidden; flex-shrink:0;
-  /* NO fixed height — card grows to fit image naturally */
-  transition:all .3s ease;
-}
-.t-card:hover{ border-color:rgba(224,61,34,.4); transform:scale(1.04); box-shadow:0 20px 50px rgba(0,0,0,.4); }
-
-/* Images: full natural size, just capped at a max-height for row 1 and row 2 */
-.t-row-1 .t-card img{
-  display:block;
-  width:auto;
-  height:auto;
-  max-height:320px;   /* row 1 — taller cards */
-  max-width:420px;
-  object-fit:contain;
-}
-.t-row-2 .t-card img{
-  display:block;
-  width:auto;
-  height:auto;
-  max-height:220px;   /* row 2 — shorter cards for visual rhythm */
-  max-width:350px;
-  object-fit:contain;
+.content-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  background: var(--cream);
+  position: relative;
 }
 
-/* ══════════════════════════════════════════════════════
-   ABOUT — SMALLER IMAGE LEFT-ALIGNED + ABOUTVID BACKGROUND
-══════════════════════════════════════════════════════ */
-#about-preview{ padding:0; position:relative; overflow:hidden; min-height:620px; background:var(--cream); }
-
-.about-video-bg{
-  position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden;
-}
-.about-video-bg video{ width:100%; height:100%; object-fit:cover; display:block; opacity:0.72; }
-/* Gradient: left stays visible (video shows through), right fades to cream */
-.about-video-bg::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to right,
-    rgba(10,9,8,0.35) 0%,
-    rgba(10,9,8,0.20) 35%,
-    rgba(250,246,240,0.90) 62%,
-    rgba(250,246,240,1.00) 100%
-  );
-}
-.about-grid{
-  display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:center;
-  max-width:1260px; margin:0 auto; padding:120px 80px; position:relative; z-index:1;
-}
-.about-visual{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;   /* LEFT-ALIGNED */
-}
-.about-img-frame{
-  border-radius:4px; overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,.22);
-  transform:perspective(800px) rotateY(4deg); transition:.6s cubic-bezier(.2,.8,.2,1);
-  /* SMALLER: was 100% width filling the column */
-  width:72%;
-}
-.about-img-frame:hover{ transform:perspective(800px) rotateY(0); }
-.about-img-frame img{
-  width:100%;
-  height:320px;   /* reduced from 440px */
-  object-fit:cover; display:block;
-}
-.about-deco{
-  position:absolute; bottom:-24px; left:-24px; width:90px; height:90px;
-  border:2px solid var(--red); border-radius:2px; z-index:-1;
-}
-.about-badge {
-  position: absolute; 
-  top: -16px; 
-  right: 28%;
-  background: var(--red); 
-  color: #fff;
-  /* REDUCED PADDING: from 12px 16px to 6px 10px */
-  padding: 6px 10px; 
-  border-radius: 2px; 
-  font-family: var(--fd); 
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(224,61,34,0.35);
-  /* Added max-width to keep it compact */
-  max-width: fit-content; 
+.coach-profile-img {
+  width: 280px;
+  height: 280px;
+  background: var(--black);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: -40px;
+  z-index: 2;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  transform: perspective(1000px) rotateY(-10deg);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.about-badge strong { 
-  /* REDUCED SIZE: from 24px to 18px */
-  font-size: 18px; 
-  font-weight: 800; 
-  display: block; 
-  line-height: 1; 
+.coach-profile-img:hover {
+  transform: perspective(1000px) rotateY(0deg) scale(1.05);
 }
 
-.about-badge span { 
-  /* REDUCED SIZE: from 11px to 9px */
-  font-size: 9px; 
-  letter-spacing: 1px; 
-  text-transform: uppercase; 
-}
-/* ══════════════════ PROBLEM ══════════════════ */
-#problem{ background:var(--dark); padding:120px 80px; position:relative; overflow:hidden; }
-#problem::before{
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(ellipse 50% 60% at 90% 50%,rgba(224,61,34,.08) 0%,transparent 70%);
-  pointer-events:none;
-}
-#problem .section-heading{ color:#fff; }
-#problem .section-label{ color:var(--gold); }
-
-/* ══════════════════ DIFFERENT ══════════════════ */
-#different{ background:var(--off); padding:120px 80px; position:relative; overflow:hidden; }
-#different::before{
-  content:""; position:absolute; inset:0;
-  background-image:radial-gradient(circle,rgba(0,0,0,.06) 1px,transparent 1px);
-  background-size:28px 28px; pointer-events:none; opacity:.6;
+.coach-profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* ══════════════════ VALUE ══════════════════ */
-#value{ background:var(--cream); padding:120px 80px; }
+.info-card {
+  background: #5d34f5; 
+  padding: 80px 40px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  z-index: 1;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease;
+}
+.info-card:hover { transform: translateY(-5px); }
 
-/* ══════════════════ FINAL CTA ══════════════════ */
+.info-card h2 { font-family: var(--fd); font-size: 42px; margin-bottom: 15px; }
+.info-card p { opacity: 0.9; line-height: 1.8; margin-bottom: 25px; font-weight: 300; }
+
+.feature-list { list-style: none; margin-bottom: 30px; }
+.feature-list li { 
+  display: flex; align-items: center; gap: 10px; 
+  margin-bottom: 12px; font-size: 15px; 
+}
+.feature-list span { color: var(--gold); font-weight: bold; }
+
+/* ══════════════════ CTA SECTION ══════════════════ */
 #final{ background:var(--dark); padding:140px 80px; text-align:center; position:relative; overflow:hidden; }
-#final::before{
-  content:""; position:absolute; top:-200px; left:50%; transform:translateX(-50%);
-  width:800px; height:800px; background:radial-gradient(circle,rgba(224,61,34,.1) 0%,transparent 60%);
-  pointer-events:none;
-}
-#final .section-heading{ color:#fff; }
-#final .body-text{ color:rgba(255,255,255,.5); max-width:480px; margin:0 auto 48px; }
+#final .section-heading{ font-family: var(--fd); font-size: 52px; color:#fff; margin-bottom: 20px; }
+#final .body-text{ color:rgba(255,255,255,.5); max-width:480px; margin:0 auto 48px; line-height: 1.6; }
 .cta-buttons{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-
-/* ══════════════════ FLOAT BAR ══════════════════ */
-.float-bar{
-  position:fixed; right:22px; top:50%; transform:translateY(-50%);
-  display:flex; flex-direction:column; gap:12px; z-index:2000;
-}
-.float-btn{
-  width:50px; height:50px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.2); transition:all .3s cubic-bezier(.2,.8,.2,1);
-  position:relative; overflow:visible;
-}
-.float-btn::before{
-  content:attr(data-label); position:absolute; right:62px;
-  background:var(--black); color:#fff; padding:6px 12px; border-radius:3px;
-  font-size:11px; font-weight:600; white-space:nowrap;
-  opacity:0; transform:translateX(8px); transition:.25s ease; pointer-events:none;
-}
-.float-btn:hover::before{ opacity:1; transform:translateX(0); }
-.float-btn:hover{ transform:scale(1.15); }
-.float-btn svg{ width:22px; height:22px; }
-
-/* ══════════════════ FOOTER ══════════════════ */
-footer{
-  background:#080808; color:rgba(255,255,255,.3);
-  text-align:center; padding:28px; font-size:13px; letter-spacing:.5px;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-footer span{ color:var(--red); }
 
 /* ══════════════════ GRAIN ══════════════════ */
 body::after{
@@ -526,191 +152,30 @@ body::after{
   pointer-events:none; z-index:9998; opacity:.4;
 }
 
-/* ══════════════════════════════════════════════════════
-   MOBILE  ≤ 900px
-══════════════════════════════════════════════════════ */
+/* ══════════════════ MOBILE ══════════════════ */
 @media(max-width:900px){
-  html, body{ overflow-x:hidden; }
-
-  /* NAV */
   nav{
     padding:12px 16px; flex-direction:column; align-items:center; gap:10px;
+    background:rgba(250,246,240,0.95);
   }
-  nav::before{ background:rgba(250,246,240,.95) !important; backdrop-filter:blur(16px) !important; border-bottom:1px solid var(--border) !important; }
   nav ul{ gap:0; width:100%; justify-content:space-around; border-top:1px solid var(--border); padding-top:10px; }
-  nav ul li{ flex:1; text-align:center; }
   nav ul li a{ font-size:12px; }
 
-  section{ padding:72px 16px; }
-  #hero{
-    padding:140px 16px 60px;
-    min-height:auto; align-items:flex-start;
-    width:100%; max-width:100vw; overflow:hidden;
-  }
-  #hero::before{ display:none; }
-  #results-services{ clip-path:none; padding:72px 16px; }
-  #problem{ padding:72px 16px; }
-  #different{ padding:72px 16px; }
-  #value{ padding:72px 16px; }
-  #final{ padding:100px 16px; }
-  #testimonials{ padding:72px 0; }
-
-  .section-heading{ font-size:32px; letter-spacing:-.8px; margin-bottom:18px; }
-  .btn{ padding:14px 20px; font-size:13px; }
-
-  /* HERO — single column, fully contained */
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:28px;
-    width:100%;
-    max-width:100%;
-  }
-  .hero-text{
-    text-align:left; padding-right:0;
-    width:100%; max-width:100%;
-  }
-  .hero-heading{ font-size:38px; letter-spacing:-1.2px; text-align:left; }
-  .hero-desc{ margin:0 0 24px; text-align:left; max-width:100%; }
-  .hero-eyebrow{ font-size:10px; letter-spacing:2px; }
-
-  /* Video wrap — constrained to viewport */
-  .hero-video-wrap{
-    width:100%; max-width:100%;
-    position:relative; overflow:visible;
-  }
-  .hero-video-frame{
-    transform:none !important;
-    width:100%; max-width:100%;
-    border-radius:4px; overflow:hidden;
-  }
-  .hero-video-frame video{
-    width:100%; height:auto;
-    max-height:320px;
-    display:block;
-  }
-  .hero-video-badge{ width:56px; height:56px; top:-10px; right:4px; }
-  .hero-video-badge span{ font-size:13px; }
-  .hero-video-badge small{ font-size:7px; }
-  .hero-stats{ justify-content:flex-start; gap:20px; flex-wrap:wrap; }
-  .hero-stat-num{ font-size:28px; }
-  .hero-deco-line{ display:none; }
-  .hero-desktop-btn{ display:none; }
-  .hero-mobile-btn{
-    display:inline-flex; width:100%;
-    justify-content:center; margin-top:12px;
-  }
-
-  /* CARDS */
-  .three-col{ grid-template-columns:1fr; gap:16px; }
-  .value-grid{ grid-template-columns:1fr; gap:16px; }
-  .card{ padding:28px 22px; }
-  .dark-card{ padding:26px 20px; }
-
-  /* SERVICES */
-  .results-grid{ grid-template-columns:1fr; gap:32px; }
-  .ba-stack{ display:none; }
-  .services-wrapper{ border-left:none; border-top:2px solid var(--red); padding-left:0; padding-top:28px; }
-  .services-list{ gap:6px; }
-  .services-list li{ font-size:14px; padding:12px 14px; border-radius:4px; }
-
-  /* RESULTS 2×3 ON MOBILE */
-  #results-preview{ padding:72px 10px; }
-  .results-preview-grid{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:repeat(3,42vw);
-    gap:6px;
-    max-width:100%;
-    margin-bottom:24px;
-  }
-  .rp-box::after{ font-size:14px; }
-
-/* TESTIMONIALS MOBILE - Increased size and halved speed */
-  .testimonials-header{ padding:0 20px; }
-  .testimonial-wall{
-    gap:12px;
-    mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent);
-    -webkit-mask-image:linear-gradient(to right,transparent,black 4%,black 96%,transparent);
-  }
-
-  /* Speed halved by doubling the animation duration */
-  .t-row-1 { animation-duration: 60s !important; } 
-  .t-row-2 { animation-duration: 76s !important; }
-
-  /* Images enlarged for better mobile visibility */
-  .t-row-1 .t-card img{ max-height:300px; max-width:350px; }
-  .t-row-2 .t-card img{ max-height:220px; max-width:300px; }
-
-/* ABOUT MOBILE - Image moved to 75% lower on the video */
-  #about-preview { 
-    min-height: auto; 
-    display: block; 
-    background: var(--cream); 
-  }
-
-  /* Video container height remains at 50% of the screen */
-  .about-video-bg { 
-    position: relative; 
-    height: 50vh; 
-    width: 100%; 
-    z-index: 0; 
-  }
-
-  .about-video-bg::after {
-    background: linear-gradient(to bottom,
-      rgba(10,9,8,.05) 0%,
-      rgba(250,246,240,.2) 70%, /* Pushed the fade further down */
-      rgba(250,246,240,1.00) 100%
-    );
-  }
-
-  /* 75% ADJUSTMENT: 
-     Reducing the negative margin-top moves the grid lower. 
-     -12vh ensures only the top ~25% of the image overlaps the video. */
-  .about-grid { 
-    grid-template-columns: 1fr; 
-    gap: 0; 
-    padding: 0 20px 72px; 
-    margin-top: -12vh; 
-    position: relative;
-    z-index: 1;
-  }
-
-  .about-visual { 
-    align-items: center; 
-    margin-bottom: 25px; 
-  }
-
-  .about-img-frame { 
-    transform: none !important; 
-    width: 80%; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-  }
-
-  /* Keep the image height consistent */
-  .about-img-frame img { height: 320px; }
-
-  /* Compact badge positioning */
-  .about-badge { 
-    position: absolute; 
-    bottom: -10px; 
-    right: 15%; 
-    margin-top: 0; 
-  }
-
-  .about-text { text-align: center; }
-  .about-text .section-label { justify-content: center; }
+  .about-hero { grid-template-columns: 1fr; }
+  .video-side { height: 40vh; }
+  
+  .content-side { padding: 40px 20px; }
+  .coach-profile-img { width: 220px; height: 220px; margin-bottom: -30px; }
+  
+  .info-card { padding: 60px 25px 30px; }
+  .info-card h2 { font-size: 32px; }
+  
+  #final { padding: 80px 20px; }
+  #final .section-heading { font-size: 32px; }
+}
 </style>
 </head>
 <body>
-
-<div id="loader">
-  <div>
-    <div class="loader-ring"></div>
-    <div class="loader-logo">Indoor <span>Fitness</span></div>
-    <div class="loader-sub">Women Only · Online Training</div>
-  </div>
-</div>
-<div class="page-curtain"></div>
 
 <nav>
   <div class="nav-logo">Indoor Fitness</div>
@@ -721,449 +186,53 @@ body::after{
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid">
-    <div class="hero-text reveal-left">
-      <div class="hero-eyebrow">Women Only Online Fitness</div>
-      <!-- LEFT ALIGNED heading and desc -->
-      <h1 class="hero-heading">Transform<br>your body<br>in just <em>30 days.</em></h1>
-      <p class="hero-desc">Personal training, group classes, fat loss programs and diet planning — all from the comfort of home.</p>
-      <a href="#final" class="btn hero-desktop-btn">
-        <span>Start Your Journey</span>
-        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <div class="hero-stats">
-        <div><span class="hero-stat-num">500+</span><div class="hero-stat-label">Women Transformed</div></div>
-        <div><span class="hero-stat-num">30</span><div class="hero-stat-label">Days to Results</div></div>
-        <div><span class="hero-stat-num">100%</span><div class="hero-stat-label">Online &amp; Flexible</div></div>
-      </div>
-    </div>
-    <div class="hero-video-wrap reveal-right">
-      <div class="hero-deco-line"></div>
-      <div class="hero-video-frame tilt" id="heroVideoFrame">
-        <video autoplay muted loop playsinline poster="poster.jpg">
-          <source src="homevid.mp4" type="video/mp4">
-        </video>
-        <div class="hero-video-badge"><span>#1</span><small>Rated</small></div>
-      </div>
-    </div>
-    <a href="#final" class="btn hero-mobile-btn">
-      <span>Start Your Journey</span>
-      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item">Personal Training</span><span class="ticker-item">Women Fat Loss</span>
-    <span class="ticker-item">Online Group Classes</span><span class="ticker-item">Diet Planning</span>
-    <span class="ticker-item">Home Workouts</span><span class="ticker-item">Post-Pregnancy Fitness</span>
-    <span class="ticker-item">Strength Training</span><span class="ticker-item">Real Results</span>
-    <span class="ticker-item">Personal Training</span><span class="ticker-item">Women Fat Loss</span>
-    <span class="ticker-item">Online Group Classes</span><span class="ticker-item">Diet Planning</span>
-    <span class="ticker-item">Home Workouts</span><span class="ticker-item">Post-Pregnancy Fitness</span>
-    <span class="ticker-item">Strength Training</span><span class="ticker-item">Real Results</span>
-  </div>
-</div>
-
-<!-- RESULTS + SERVICES -->
-<section id="results-services">
-  <div class="results-grid">
-    <div class="ba-stack reveal-left">
-      <div class="ba-item tilt"><img src="before.jpg" alt="Before"><div class="ba-label">Before</div></div>
-      <div class="ba-item tilt"><img src="after.jpg" alt="After"><div class="ba-label">After</div></div>
-    </div>
-    <div class="services-wrapper reveal-right">
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-heading">Our Services</h2>
-      <ul class="services-list">
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Personal Training</li>
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Women Fat Loss Programs</li>
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Online Group Classes</li>
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Diet Planning</li>
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Home Workout Plans</li>
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Post-Pregnancy Fitness</li>
-        <li><div class="svc-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Strength Training</li>
-      </ul>
-      <a href="#final" class="btn" style="margin-top:36px;">
-        <span>Book Consultation</span>
-        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS PREVIEW: 2 cols × 3 rows -->
-<section id="results-preview">
-  <span class="section-label center reveal" style="display:block;">Transformations</span>
-  <h2 class="section-heading center reveal">Results</h2>
-  <div class="results-preview-grid reveal" id="resultsGrid">
-    <div class="rp-box"><img alt="Result" class="visible"></div>
-    <div class="rp-box"><img alt="Result" class="visible"></div>
-    <div class="rp-box"><img alt="Result" class="visible"></div>
-    <div class="rp-box"><img alt="Result" class="visible"></div>
-    <div class="rp-box"><img alt="Result" class="visible"></div>
-    <div class="rp-box"><img alt="Result" class="visible"></div>
-  </div>
-  <div class="center">
-    <a href="results.html" class="btn btn-outline">
-      <span>View All Results</span>
-      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- TESTIMONIALS: two horizontal scrolling rows, variable size images -->
-<section id="testimonials">
-  <div class="testimonials-header reveal">
-    <span class="section-label">Client Love</span>
-    <h2 class="section-heading">What Our Clients Say</h2>
-  </div>
-  <div class="testimonial-wall">
-    <!-- Row 1 scrolls left -->
-    <div class="t-row t-row-1">
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
-      <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
-      <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
-      <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
-      <!-- Duplicate for seamless loop -->
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
-      <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
-      <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
-      <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
-    </div>
-    <!-- Row 2 scrolls right — reversed order -->
-    <div class="t-row t-row-2">
-      <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
-      <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
-      <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-      <!-- Duplicate for seamless loop -->
-      <div class="t-card"><img src="rev12.jpeg" alt="Review 12"></div>
-      <div class="t-card"><img src="rev11.jpeg" alt="Review 11"></div>
-      <div class="t-card"><img src="rev10.jpeg" alt="Review 10"></div>
-      <div class="t-card"><img src="rev9.jpeg"  alt="Review 9"></div>
-      <div class="t-card"><img src="rev8.jpeg"  alt="Review 8"></div>
-      <div class="t-card"><img src="rev7.jpeg"  alt="Review 7"></div>
-      <div class="t-card"><img src="rev6.jpeg"  alt="Review 6"></div>
-      <div class="t-card"><img src="rev5.jpeg"  alt="Review 5"></div>
-      <div class="t-card"><img src="rev4.jpeg"  alt="Review 4"></div>
-      <div class="t-card"><img src="rev3.jpeg"  alt="Review 3"></div>
-      <div class="t-card"><img src="rev2.jpeg"  alt="Review 2"></div>
-      <div class="t-card"><img src="rev1.jpeg"  alt="Review 1"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT: aboutvid as full background, smaller image left-aligned, text on right -->
-<section id="about-preview">
-  <div class="about-video-bg">
-    <!-- Named "aboutvid" as requested -->
-    <video id="aboutBgVid" autoplay muted loop playsinline preload="auto">
+<section class="about-hero">
+  <div class="video-side">
+    <video autoplay muted loop playsinline>
       <source src="aboutvid.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="about-grid">
-    <div class="about-visual reveal-left">
-      <div class="about-img-frame tilt" id="aboutImgFrame">
-        <img src="aboutimg.jpg" alt="Coach Kavitha">
-      </div>
-      <div class="about-deco"></div>
-      <div class="about-badge"><strong>5★</strong><span>Rated Coach</span></div>
+
+  <div class="content-side">
+    <div class="coach-profile-img">
+      <img src="aboutimg.jpg" alt="Coach Kavitha">
     </div>
-    <div class="about-text reveal-right">
-      <span class="section-label">Meet Your Coach</span>
-      <h2 class="section-heading">About <span class="highlight">Kavitha</span></h2>
-      <p class="body-text">I help women get fit in a simple, realistic and sustainable way. No extreme methods. No crash programs. Just smart training and consistency.</p>
-      <p class="body-text" style="margin-top:12px;">My coaching focuses on real-life routines that busy women can follow without stress, confusion, or gym intimidation.</p>
-      <ul class="about-list">
-        <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Certified Fitness Trainer &amp; Diet Coach</li>
-        <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Specialized in Women Fat Loss</li>
-        <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Designed for Busy Schedules</li>
-        <li><div class="about-list-check"><svg viewBox="0 0 24 24"><path d="M3 12l6 6 12-12"/></svg></div>Suitable for All Age Groups</li>
+
+    <div class="info-card">
+      <h2>Hi, I’m Kavitha</h2>
+      <p>I help women get fit in a simple, realistic and sustainable way. No extreme methods. No crash programs. Just smart training and consistency.</p>
+      
+      <ul class="feature-list">
+        <li><span>✦</span> Certified Fitness Trainer</li>
+        <li><span>✦</span> Specialized in Women Fat Loss</li>
+        <li><span>✦</span> Designed for Busy Schedules</li>
       </ul>
-      <a href="#final" class="btn">
+
+      <a href="#final" class="btn" style="background: var(--white); color: var(--black); border: none;">
         <span>Train With Me</span>
-        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
-<section id="problem">
-  <span class="section-label center reveal" style="color:var(--gold);display:block;">The Problem</span>
-  <h2 class="section-heading center reveal" style="color:#fff;">Why most fitness plans fail</h2>
-  <div class="three-col" style="margin-top:0;">
-    <div class="dark-card reveal stagger-1 tilt">
-      <div class="card-num">01</div><div class="subheading">No time?</div>
-      <p class="body-text">Work, family, responsibilities — doing it alone with no structure leaves no time for fitness.</p>
-    </div>
-    <div class="dark-card reveal stagger-2 tilt">
-      <div class="card-num">02</div><div class="subheading">Random workouts?</div>
-      <p class="body-text">No structure. No accountability. No real results. You start motivated. You stop confused.</p>
-    </div>
-    <div class="dark-card reveal stagger-3 tilt">
-      <div class="card-num">03</div><div class="subheading">Gym memberships?</div>
-      <p class="body-text">Crowded. Intimidating. And honestly — inconvenient for the real life of a busy woman.</p>
-    </div>
-  </div>
-  <div class="center" style="margin-top:60px;">
-    <a href="#final" class="btn btn-dark">
-      <span>Fix This Now</span>
-      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- DIFFERENT -->
-<section id="different">
-  <span class="section-label center reveal" style="display:block;">The Solution</span>
-  <h2 class="section-heading center reveal">What makes this different</h2>
-  <div class="three-col" style="margin-top:0;">
-    <div class="card reveal stagger-1 tilt">
-      <div class="card-num">01</div><div class="subheading">Women only.</div>
-      <p class="body-text">No pressure. No judgement. A safe, supportive space built entirely for women.</p>
-    </div>
-    <div class="card reveal stagger-2 tilt">
-      <div class="card-num">02</div><div class="subheading">Built for busy schedules.</div>
-      <p class="body-text">Short, effective sessions that fit into your real life. No wasted time. No commute.</p>
-    </div>
-    <div class="card reveal stagger-3 tilt">
-      <div class="card-num">03</div><div class="subheading">Real guidance.</div>
-      <p class="body-text">You're not guessing what to do next. You're following a plan that actually works.</p>
-    </div>
-  </div>
-  <div class="center" style="margin-top:60px;">
-    <a href="#final" class="btn">
-      <span>Talk to a Coach</span>
-      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- VALUE -->
-<section id="value">
-  <span class="section-label center reveal" style="display:block;">Your Investment</span>
-  <h2 class="section-heading center reveal">What you actually get</h2>
-  <div class="value-grid" style="margin-top:0;">
-    <div class="card reveal stagger-1 tilt">
-      <div class="card-num">R</div><div class="subheading">Results First</div>
-      <p class="body-text">Our first priority is progress. Less talk. More visible action and real change.</p>
-    </div>
-    <div class="card reveal stagger-2 tilt">
-      <div class="card-num">C</div><div class="subheading">Consistency</div>
-      <p class="body-text">Simple routines you can actually stick to — even on your busiest days.</p>
-    </div>
-    <div class="card reveal stagger-3 tilt">
-      <div class="card-num">S</div><div class="subheading">Support</div>
-      <p class="body-text">You're never alone in this journey. We guide you step by step, every day.</p>
-    </div>
-    <div class="card reveal stagger-4 tilt">
-      <div class="card-num">★</div><div class="subheading">Specialization</div>
-      <p class="body-text">Women's bodies are different. This program is built only for women — nothing generic.</p>
-    </div>
-  </div>
-  <div class="center" style="margin-top:60px;">
-    <a href="#final" class="btn">
-      <span>Check Availability</span>
-      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
 <section id="final">
-  <span class="section-label reveal" style="color:var(--gold);">Get Started</span>
-  <h2 class="section-heading reveal">Start your fitness<br>journey today</h2>
-  <p class="body-text reveal">Message us directly — we reply fast and we're ready to help you transform.</p>
-  <div class="cta-buttons reveal">
+  <h2 class="section-heading">Start your fitness<br>journey today</h2>
+  <p class="body-text">Message us directly — we reply fast and we're ready to help you transform.</p>
+  <div class="cta-buttons">
     <a href="https://wa.me/919500644455" class="btn">
-      <svg style="width:18px;height:18px;fill:#fff;position:relative;z-index:1;" viewBox="0 0 32 32"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.46.66 4.77 1.8 6.77L2 30l7.45-1.77A13.94 13.94 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm6.3 19.44c-.34-.17-2.03-1-2.35-1.12-.31-.11-.54-.17-.77.17-.23.34-.88 1.12-1.08 1.35-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.75-1.7-1.02-.9-1.7-2.02-1.9-2.36-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.09-.17-.77-1.86-1.06-2.55-.28-.67-.56-.58-.77-.59h-.66c-.23 0-.6.09-.91.43-.31.34-1.2 1.17-1.2 2.86s1.23 3.32 1.4 3.55c.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.03-.83 2.32-1.63.29-.8.29-1.49.2-1.63-.08-.14-.31-.23-.65-.4z"/></svg>
       <span>Chat on WhatsApp</span>
     </a>
-    <a href="https://www.instagram.com/kavitha_onlinefitness" class="btn" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-color:transparent;">
-      <svg style="width:18px;height:18px;fill:#fff;position:relative;z-index:1;" viewBox="0 0 32 32"><path d="M16 5.8c3.4 0 3.8 0 5.1.1 3.1.1 4.5 1.6 4.6 4.6.1 1.3.1 1.7.1 5.1s0 3.8-.1 5.1c-.1 3-1.6 4.5-4.6 4.6-1.3.1-1.7.1-5.1.1s-3.8 0-5.1-.1c-3-.1-4.5-1.6-4.6-4.6C6.2 19.4 6.1 19 6.1 16s0-3.8.1-5.1C6.3 7.9 7.8 6.4 10.9 6c1.3-.1 1.7-.2 5.1-.2zm0-2.3c-3.4 0-3.9 0-5.2.1-4.3.2-6.7 2.6-6.9 6.9C3.8 11.8 3.8 12.2 3.8 16s0 4.2.1 5.5c.2 4.3 2.6 6.7 6.9 6.9 1.3.1 1.8.1 5.2.1s3.9 0 5.2-.1c4.3-.2 6.7-2.6 6.9-6.9.1-1.3.1-1.8.1-5.2s0-3.9-.1-5.2c-.2-4.2-2.5-6.7-6.9-6.9-1.3 0-1.8-.1-5.2-.1zm0 6.2a6.3 6.3 0 100 12.6 6.3 6.3 0 000-12.6zm0 10.4a4.1 4.1 0 110-8.2 4.1 4.1 0 010 8.2zm6.5-11.9a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
+    <a href="https://www.instagram.com/kavitha_onlinefitness" class="btn" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border:none;">
       <span>Message on Instagram</span>
     </a>
   </div>
 </section>
 
-<footer>© 2026 <span>Indoor Fitness</span> · Women Only Online Fitness Studio · Chennai, India</footer>
+<footer>
+  <p style="text-align:center; padding: 40px; color: var(--gray); font-size: 13px;">
+    © 2026 Indoor Fitness · Women Only Online Fitness Studio
+  </p>
+</footer>
 
-<div class="float-bar">
-  <a class="float-btn" href="tel:+919500644455" style="background:#4CAF50;" data-label="Call Us">
-    <svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.25c1.1.3 2.3.45 3.6.45a1 1 0 011 1V21a1 1 0 01-1 1C11 22 2 13 2 2a1 1 0 011-1h3.6a1 1 0 011 1c0 1.3.15 2.5.45 3.6a1 1 0 01-.25 1z"/></svg>
-  </a>
-  <a class="float-btn" href="https://www.instagram.com/kavitha_onlinefitness" target="_blank" style="background:radial-gradient(circle at 30% 110%,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);" data-label="Instagram">
-    <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 5.8c3.4 0 3.8 0 5.1.1 3.1.1 4.5 1.6 4.6 4.6.1 1.3.1 1.7.1 5.1s0 3.8-.1 5.1c-.1 3-1.6 4.5-4.6 4.6-1.3.1-1.7.1-5.1.1s-3.8 0-5.1-.1c-3-.1-4.5-1.6-4.6-4.6C6.2 19.4 6.1 19 6.1 16s0-3.8.1-5.1C6.3 7.9 7.8 6.4 10.9 6c1.3-.1 1.7-.2 5.1-.2zm0-2.3c-3.4 0-3.9 0-5.2.1-4.3.2-6.7 2.6-6.9 6.9C3.8 11.8 3.8 12.2 3.8 16s0 4.2.1 5.5c.2 4.3 2.6 6.7 6.9 6.9 1.3.1 1.8.1 5.2.1s3.9 0 5.2-.1c4.3-.2 6.7-2.6 6.9-6.9.1-1.3.1-1.8.1-5.2s0-3.9-.1-5.2c-.2-4.2-2.5-6.7-6.9-6.9-1.3 0-1.8-.1-5.2-.1zm0 6.2a6.3 6.3 0 100 12.6 6.3 6.3 0 000-12.6zm0 10.4a4.1 4.1 0 110-8.2 4.1 4.1 0 010 8.2zm6.5-11.9a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
-  </a>
-  <a class="float-btn" href="https://wa.me/919500644455" target="_blank" style="background:#25D366;" data-label="WhatsApp">
-    <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.46.66 4.77 1.8 6.77L2 30l7.45-1.77A13.94 13.94 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm6.3 19.44c-.34-.17-2.03-1-2.35-1.12-.31-.11-.54-.17-.77.17-.23.34-.88 1.12-1.08 1.35-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.75-1.7-1.02-.9-1.7-2.02-1.9-2.36-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.09-.17-.77-1.86-1.06-2.55-.28-.67-.56-.58-.77-.59h-.66c-.23 0-.6.09-.91.43-.31.34-1.2 1.17-1.2 2.86s1.23 3.32 1.4 3.55c.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.03-.83 2.32-1.63.29-.8.29-1.49.2-1.63-.08-.14-.31-.23-.65-.4z"/></svg>
-  </a>
-</div>
-
-<script>
-/* LOADER */
-window.addEventListener('load', () => {
-  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
-});
-
-/* PAGE TRANSITIONS */
-document.querySelectorAll('a[href]:not([href^="#"]):not([target="_blank"])').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const href = link.href;
-    document.querySelector('.page-curtain').classList.add('active');
-    setTimeout(() => { window.location = href; }, 600);
-  });
-});
-
-/* SCROLL REVEAL */
-const revObs = new IntersectionObserver(entries => {
-  entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('active'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => revObs.observe(el));
-
-/* NAV SCROLL */
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
-}, { passive: true });
-
-/* 3D TILT */
-document.querySelectorAll('.tilt').forEach(el => {
-  el.addEventListener('mousemove', e => {
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `perspective(800px) rotateY(${x * 12}deg) rotateX(${-y * 8}deg) scale(1.02)`;
-  });
-  el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-});
-
-/* HERO FRAME TILT (desktop) */
-const hf = document.getElementById('heroVideoFrame');
-if (hf && window.innerWidth > 900) {
-  hf.addEventListener('mousemove', e => {
-    const r = hf.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    hf.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 6}deg) scale(1.015)`;
-  });
-  hf.addEventListener('mouseleave', () => {
-    hf.style.transform = 'perspective(800px) rotateY(-4deg) rotateX(2deg)';
-  });
-}
-
-/* ══════════════════════════════════════════════
-   RESULTS: 2×3 grid, 17 images, smart shuffle
-   - No image appears twice in the same 6
-   - The next 6 never repeat any from the previous 6
-══════════════════════════════════════════════ */
-const TOTAL_IMAGES = 17;
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-// Build a pool of all 17 images, pick 6 ensuring no repeats from previous set
-let usedInPrevSet = new Set();
-
-function pickNextSet() {
-  // Available = all images NOT in the previous set
-  const available = Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1)
-                        .filter(n => !usedInPrevSet.has(n));
-
-  // If fewer than 6 available (shouldn't happen with 17 images), top up from full pool
-  let pool = shuffle(available);
-  if (pool.length < 6) {
-    const extras = shuffle(Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1)
-                              .filter(n => !pool.includes(n)));
-    pool = [...pool, ...extras];
-  }
-
-  const picks = pool.slice(0, 6);
-  usedInPrevSet = new Set(picks);
-  return picks;
-}
-
-let currentSet = pickNextSet();
-
-// Set initial src immediately
-document.querySelectorAll('#resultsGrid .rp-box img').forEach((img, i) => {
-  img.src = `ba${currentSet[i]}.jpg`;
-});
-
-function rotateResults() {
-  const imgs = document.querySelectorAll('#resultsGrid .rp-box img');
-  const next = pickNextSet();
-  currentSet = next;
-  imgs.forEach((img, i) => {
-    img.classList.remove('visible');
-    img.classList.add('fading');
-    setTimeout(() => {
-      img.src = `ba${next[i]}.jpg`;
-      img.classList.remove('fading');
-      img.classList.add('visible');
-    }, 400);
-  });
-}
-setInterval(rotateResults, 3000);
-
-/* ABOUT BG VIDEO */
-const abv = document.getElementById('aboutBgVid');
-if (abv) {
-  new IntersectionObserver(entries => {
-    entries.forEach(e => { e.isIntersecting ? abv.play().catch(() => {}) : abv.pause(); });
-  }, { threshold: 0.1 }).observe(abv);
-}
-
-/* TOUCH: pause testimonial rows on tap and resume after 2s */
-document.querySelectorAll('.t-row').forEach(row => {
-  row.addEventListener('touchstart', () => {
-    row.style.animationPlayState = 'paused';
-  }, { passive: true });
-
-  row.addEventListener('touchend', () => {
-    // Increased timeout to 2000ms (2 seconds)
-    setTimeout(() => { 
-      row.style.animationPlayState = 'running'; 
-    }, 2000); 
-  }, { passive: true });
-});
-</script>
 </body>
-
 </html>
